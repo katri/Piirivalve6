@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:create id="fc_ee_itcollege_i377_team6_entities_Vaeosa" modelAttribute="vaeosa" path="/vaeosas" render="${empty dependencies}" z="ww+yPK9HGp4eIFe+pfW3x440u+c=">
+        <field:datetime dateTimePattern="${vaeosa_alates_date_format}" field="alates" id="c_ee_itcollege_i377_team6_entities_Vaeosa_alates" z="F/C89pzyz9UyH9+uM1W+Fv2hvQs="/>
+        <field:input field="avaja" id="c_ee_itcollege_i377_team6_entities_Vaeosa_avaja" z="4WxauhjgQCh3UCAGy1w8OkGO5qk="/>
+        <field:datetime dateTimePattern="${vaeosa_avatud_date_format}" field="avatud" id="c_ee_itcollege_i377_team6_entities_Vaeosa_avatud" z="HtS0BQ4J1fH/ouBT5ZE1jR46XOY="/>
+        <field:input field="kommentaar" id="c_ee_itcollege_i377_team6_entities_Vaeosa_kommentaar" z="enuR6X/PxtUgQnJLEBmTmTYABp4="/>
+        <field:input field="kood" id="c_ee_itcollege_i377_team6_entities_Vaeosa_kood" z="IEy0Dra98GfKt//3UL5BjQT19mQ="/>
+        <field:datetime dateTimePattern="${vaeosa_kuni_date_format}" field="kuni" id="c_ee_itcollege_i377_team6_entities_Vaeosa_kuni" z="wv7TBOztar44c4Cv6Ew5Q/oKxrA="/>
+        <field:datetime dateTimePattern="${vaeosa_muudetud_date_format}" field="muudetud" id="c_ee_itcollege_i377_team6_entities_Vaeosa_muudetud" z="1ByrxQIKyVcZX+0LOtShKHJJa3Y="/>
+        <field:input field="muutja" id="c_ee_itcollege_i377_team6_entities_Vaeosa_muutja" z="rZNZoofAsym2L+KCZUgSVnpegPY="/>
+        <field:input field="nimetus" id="c_ee_itcollege_i377_team6_entities_Vaeosa_nimetus" z="cPNewF1LY7UWFCIkYYGJnUTqH+s="/>
+        <field:datetime dateTimePattern="${vaeosa_suletud_date_format}" field="suletud" id="c_ee_itcollege_i377_team6_entities_Vaeosa_suletud" z="Jden/+PYd0+wDXDPRRGKph0vo6I="/>
+        <field:input field="sulgeja" id="c_ee_itcollege_i377_team6_entities_Vaeosa_sulgeja" z="zQW6557pjVx1jaZsWcqc9XykuJg="/>
+        <field:simple field="piiriloiguHaldajas" id="c_ee_itcollege_i377_team6_entities_Vaeosa_piiriloiguHaldajas" messageCode="entity_reference_not_managed" messageCodeAttribute="Piiriloigu Haldaja" z="qNEbbFKoIfQ4cm4GYgmF8StFxz4="/>
+        <field:simple field="piiripunktiAlluvuses" id="c_ee_itcollege_i377_team6_entities_Vaeosa_piiripunktiAlluvuses" messageCode="entity_reference_not_managed" messageCodeAttribute="Piiripunkti Alluvus" z="twIWAK4KLDBSgD/u6ecOSE9Fyq4="/>
+        <field:select field="riigiAdminYksus" id="c_ee_itcollege_i377_team6_entities_Vaeosa_riigiAdminYksus" itemValue="riigiAdminYksusId" items="${riigiadminyksuses}" path="/riigiadminyksuses" z="Aqpj2sBwF5fDzLL5vp/c0aKH1Hs="/>
+        <field:simple field="vaeosaAlluvuses1" id="c_ee_itcollege_i377_team6_entities_Vaeosa_vaeosaAlluvuses1" messageCode="entity_reference_not_managed" messageCodeAttribute="Vaeosa Alluvus" z="WvnVDJ6ysp37O8IsER93hFYs7Vo="/>
+        <field:simple field="vaeosaAlluvuses2" id="c_ee_itcollege_i377_team6_entities_Vaeosa_vaeosaAlluvuses2" messageCode="entity_reference_not_managed" messageCodeAttribute="Vaeosa Alluvus" z="ohk0kL8eCtC1AIRHHn4Rpnycl1w="/>
+        <field:simple field="vahtkonds" id="c_ee_itcollege_i377_team6_entities_Vaeosa_vahtkonds" messageCode="entity_reference_not_managed" messageCodeAttribute="Vahtkond" z="rvFQpSplmX4Whu64HN2Fec6YtVs="/>
+    </form:create>
+    <form:dependency dependencies="${dependencies}" id="d_ee_itcollege_i377_team6_entities_Vaeosa" render="${not empty dependencies}" z="kxtWg8M7LL/TnCeSyrQzKXcFWEI="/>
+</div>

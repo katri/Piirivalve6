@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_ee_itcollege_i377_team6_entities_VaeosaAlluvus" items="${vaeosaalluvuses}" z="Ld9xOmc4rgoyMDpkJ+bb80jwucA=">
+        <table:table data="${vaeosaalluvuses}" id="l_ee_itcollege_i377_team6_entities_VaeosaAlluvus" path="/vaeosaalluvuses" typeIdFieldName="vaeosaAlluvusId" z="FDXLChuMdZi0wJkeMrdC83edNDM=">
+            <table:column date="true" dateTimePattern="${vaeosaAlluvus_alates_date_format}" id="c_ee_itcollege_i377_team6_entities_VaeosaAlluvus_alates" property="alates" z="c3mFB9FjyyEinRXYXWpk4P/6ikY="/>
+            <table:column id="c_ee_itcollege_i377_team6_entities_VaeosaAlluvus_avaja" property="avaja" z="/AoXqYSa2YWbk+y065ywY8lKbMY="/>
+            <table:column date="true" dateTimePattern="${vaeosaAlluvus_avatud_date_format}" id="c_ee_itcollege_i377_team6_entities_VaeosaAlluvus_avatud" property="avatud" z="m7WMdQ+NQvh3dSQ5C7aEvpp9tVk="/>
+            <table:column id="c_ee_itcollege_i377_team6_entities_VaeosaAlluvus_kommentaar" property="kommentaar" z="Uy0oNzZb8XSwDZt5WbNtSf4y5Nk="/>
+            <table:column date="true" dateTimePattern="${vaeosaAlluvus_kuni_date_format}" id="c_ee_itcollege_i377_team6_entities_VaeosaAlluvus_kuni" property="kuni" z="BOXUyS1aAXUPRUWUvmDkIB29X8Q="/>
+            <table:column date="true" dateTimePattern="${vaeosaAlluvus_muudetud_date_format}" id="c_ee_itcollege_i377_team6_entities_VaeosaAlluvus_muudetud" property="muudetud" z="T8Va7pdrmp6+aJ3h+bidcCzWctw="/>
+        </table:table>
+    </page:list>
+</div>

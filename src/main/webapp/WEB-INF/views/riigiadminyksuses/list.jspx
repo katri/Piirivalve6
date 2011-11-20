@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_ee_itcollege_i377_team6_entities_RiigiAdminYksus" items="${riigiadminyksuses}" z="AOpJ8388amiHErwb9FYVJv2Db1M=">
+        <table:table data="${riigiadminyksuses}" id="l_ee_itcollege_i377_team6_entities_RiigiAdminYksus" path="/riigiadminyksuses" typeIdFieldName="riigiAdminYksusId" z="FHFYMzDpVxJ7Bg8BNQLNWrOpzeI=">
+            <table:column id="c_ee_itcollege_i377_team6_entities_RiigiAdminYksus_kood" property="kood" z="lqQudE59Pd4IHfdWNBBqW+EkAHo="/>
+            <table:column id="c_ee_itcollege_i377_team6_entities_RiigiAdminYksus_nimetus" property="nimetus" z="bEyDDWNhJ19mZtGNnjsBgH7WICY="/>
+            <table:column id="c_ee_itcollege_i377_team6_entities_RiigiAdminYksus_vaeosas" property="vaeosas" z="dniTocrhduQdEh68BQ/DIs1j66g="/>
+        </table:table>
+    </page:list>
+</div>

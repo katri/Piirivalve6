@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_ee_itcollege_i377_team6_entities_Vaeosa" object="${vaeosa}" path="/vaeosas" z="cqW3Tfe1s0Xj2+Jt2gXDuCQELCw=">
+        <field:display date="true" dateTimePattern="${vaeosa_alates_date_format}" field="alates" id="s_ee_itcollege_i377_team6_entities_Vaeosa_alates" object="${vaeosa}" z="x5QUNDK9n2dDETU/DElF1xJXxyg="/>
+        <field:display field="avaja" id="s_ee_itcollege_i377_team6_entities_Vaeosa_avaja" object="${vaeosa}" z="Vsk363gKL0eU1/a8yOMYJG1YsSU="/>
+        <field:display date="true" dateTimePattern="${vaeosa_avatud_date_format}" field="avatud" id="s_ee_itcollege_i377_team6_entities_Vaeosa_avatud" object="${vaeosa}" z="qu7MdEWl2bV6PxMedjTuAJeF8u4="/>
+        <field:display field="kommentaar" id="s_ee_itcollege_i377_team6_entities_Vaeosa_kommentaar" object="${vaeosa}" z="0gVv7p1/KXQPtJ9wgqZVlQyLLuI="/>
+        <field:display field="kood" id="s_ee_itcollege_i377_team6_entities_Vaeosa_kood" object="${vaeosa}" z="Vm4akUs51KTF7OhYgbr3OGkXkIU="/>
+        <field:display date="true" dateTimePattern="${vaeosa_kuni_date_format}" field="kuni" id="s_ee_itcollege_i377_team6_entities_Vaeosa_kuni" object="${vaeosa}" z="ybZAYextsGrow5q9aV0437v68oQ="/>
+        <field:display date="true" dateTimePattern="${vaeosa_muudetud_date_format}" field="muudetud" id="s_ee_itcollege_i377_team6_entities_Vaeosa_muudetud" object="${vaeosa}" z="CuMP4Q480k6r9ixG2UAgTDKwE94="/>
+        <field:display field="muutja" id="s_ee_itcollege_i377_team6_entities_Vaeosa_muutja" object="${vaeosa}" z="If0TlxEBfLEJCAF8naed/JhetbI="/>
+        <field:display field="nimetus" id="s_ee_itcollege_i377_team6_entities_Vaeosa_nimetus" object="${vaeosa}" z="bjGqEDzq4dvnfZWctZK1uzuRO64="/>
+        <field:display date="true" dateTimePattern="${vaeosa_suletud_date_format}" field="suletud" id="s_ee_itcollege_i377_team6_entities_Vaeosa_suletud" object="${vaeosa}" z="riCgzP0MTKqyz2sLMFo4JufGxL0="/>
+        <field:display field="sulgeja" id="s_ee_itcollege_i377_team6_entities_Vaeosa_sulgeja" object="${vaeosa}" z="A0wLU70HpOaKjHs/rPXh4Kcb+X4="/>
+        <field:display field="riigiAdminYksus" id="s_ee_itcollege_i377_team6_entities_Vaeosa_riigiAdminYksus" object="${vaeosa}" z="h3Vh4BsWGPDL4CmxVTA6PzP7ZZM="/>
+    </page:show>
+</div>
