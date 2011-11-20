@@ -4,3 +4,6 @@ project --topLevelPackage ee.itcollege.i377 --projectName team6 --java 6
 // Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-11-19 20:05:27
 hint
 persistence setup --provider HIBERNATE --database HYPERSONIC_PERSISTENT 
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-11-20 02:03:58
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-11-20 02:10:34
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-11-20 02:24:21

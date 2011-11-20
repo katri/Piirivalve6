@@ -1,0 +1,117 @@
+﻿Meie ülesandeks on realiseerida piirilõikude ja piiripunktide üle arve pidamisega seotud vaated.
+
+Üldised nõuded
+Projekt on grupitöö, grupi liikmete arv on maksimaalselt 3 
+Projekti realiseerimiseks on aega 3 nädalat alates ülesande avaldamise kuupäevast. 
+Arendamine peab toimuma 100% GitHub-is 
+Ühtegi faili, mida saab lähtetekstidest kompileerida, ei tohi GitHub-is olla (põhimõtteliselt hõlmab see kõiki faile, mis asuvad target kataloogi all) 
+Soovitatav on vältida ka Eclipse projektifailide panemist GitHub-i (.project, .classpath, .settings) 
+Iga nägu panustab GitHub-i enda nime alt, hilisemaid vabandusi stiilis, et me käisime Peetri juures õhtuti arendamas ja tegime tööd tema nime alt ei aktsepteerita 
+Iga näo panust hinnatakse nii GitHubi statistika kui teiste projektiliikmete tagasiside alusel 
+Projekt on grupitöö, hinne on individuaalne:
+hinne = projekti üldine hinne (annab õppejõud) * tudengi panus projekti 
+Projekti jaoks peab olema kirjeldatud ITK CI serveris automaatse kokkupanemise reegel (vaata CI seadistamise juhend) ja selle abil kokku kompileeritud rakendus peab töötama 
+Rakendus peab olema kaitstud kasutajanime ja parooliga, kohe peale esimest käivitamist peavad eksisteerima järgmised kasutajad (nimi:parool): 
+admin:Aiwei7ya 
+valvur:valvur 
+ylem:ylem 
+Ühtegi Springi vaikimisi parooliga kasutajat (admin:admin, user:user vms) rakenduses olla ei tohi. 
+Tehnilised nõuded
+Projekt peab olema 100% automaatselt ehitatav Maven-i abil 
+Lähteülesandes ette antud andmebaasi struktuuri muuta EI TOHI. Vähesel määral tohib muuta vaid väljade andmetüüpe, säilitades sealjuures välja põhitüübi (näiteks stringist integeri ei tohi teha) ja maksimaalse pikkuse, ning võimalikke kirjavigu (andmebaasi arhitekt on ka inimene) 
+Lähteülesandes ette antud vaadete loogikat muuta ei tohi. Kujundus on loomulikult enda teha kuid vaade peab sisaldama kõiki nõutud elemente ja need peavad asuma lehel õigetes kohtades 
+Andmebaasiga suhtlemiseks peab kasutama JPA tehnoloogiat 
+Lahendus peab töötama rakendusserveril Tomcat 7.0.21 või uuem 
+Kasutama peab HSQLDB 1.8.x andmebaasi 
+Andmebaasi URL peab olema kujul: jdbc:hsqldb:file:${user.home}/i377/TeamXX/db;shutdown=true kus XX on meeskonna number. 
+Rakendus peab esimesel käivitamisel looma ise oma tööks vajalikud andmebaasi tabelid 
+Rakendus peab esimesel käivitamisel tekitama funktsionaalsuse demonstreerimiseks vajaliku komplekti näidisandmeid 
+Andmebaasi sisestatud andmed ei tohi rakenduse restartimisel ära kaduda 
+Mitte ükski osa rakendusest ei tohi kasutada Flash tehnoloogiat 
+Rakenduse taustsüsteem (domain)
+Meil on üks riik, igal riigil on piirivalve – järelikult ka meil.
+
+Meil on mitu väeosa.
+Väeosadesse kuuluvad piirivalvurid. Peab olema näha piirivalvurite väeosade vaheline liikumine. Igal piirivalvuril on roll väeossa kuulumisel (juhataja, juhataja asetäitja, politruk, pastor, mulla, realiige, vms.)
+Piirivalvuritel on auastmed. Peab olema näha auastmete muutumine.
+Lisaks tavapärstele kontaktandmetele (aadress, telefon, e-mail) tuleb iga piirivalvuri kohta registreerida kontaktisik, nt. mõni sugulane ja tema suguluse aste.
+
+Igat piirilõiku valvab üks väeosa, piirilõikudel võivad omakorda asuda piiripunktid.
+
+Üks väeosa teenindab mitut piirilõiku ja/või piiripunkti. Peab olema näha, milliseid piiripunkte ja -lõike on väosa teenindanud ja milliseid teenindab see praegu.
+
+Peab olema näha milline piirivalvur on millises piiripunktis ja milline on tema roll seal (ülem, ülema asetäitja, kokk, realiige, vms.)
+
+On elumajad, mis on jagatud tubadeks ja kohtadeks toas. Peab olema teada, milline piirivalvur, millisel kohal elab. Peab olema näha ka ajalugu. 
+
+Piiril käivad vahtkonnad. Iga piirivalvur kuulub mingisse vahtkonda. Peab olema näha millistes vahtkondades ta on olnud ja millises on ta praegu. Vahtkonda kuulumisel on piirivalvuril roll (vahtkonna ülem, vahtkonna ülema asetäitja, realiige vms.)
+Vahtkondadele koostatakse „piiril kõndimise“ graafik. Graafikujärgselt käiakse mingil piirilõigul.
+
+Vahel juhtuvad piiril intsidendid. Peab saama märkida, millisel piirilõigul see toimus, millal ja kes avastas. Meil on intsidendiliikide teatmik. Iga intsident tuleb siduda intsidendi liigiga selles teatmikus. Intsident on tavaliselt seotud ka piiririkkujaga. Seega peame pidama ka muude isikute teatmikku.
+Piiririkkuja kohta peab olema teada tema kodakondsus ja isikukood.
+
+Samas intsidendis võib osaleda mitu piiririkkujat. Ka piirivalvureid võib olla seotud intsidendiga. Kui intsidendiga on seotud mingi vahtkond, siis peab olema võimalik ka seda kirjeldada. Iga kord ei ole intsident seotud isikuga või isikutega vaid millegi muuga. Ka sellised intsidendid kus põder üle piiri läheb peab saama registreerida. Muud objektid on jagatud gruppidesse.
+Kui intsidendis osalenud isik või piirivalvur rikkus seadust, peab seda saama registreerida seadusepunktide lõikes. Kui seaduserikkumisega oli seotud objekt, peab ka seda saama märkida.
+Andmebaasi skeem
+Andmebaasi arhitektid on loonud vastavalt taustsüsteemile andmebaasi mudeli. Teile kui rakenduse programmeerijatele on sellest üksipulgi kinni pidamine kohustuslik. Igas mudelis on alati vaieldavusi, ükski mudel pole ideaalne ja asju saab teha mitut moodi. Andmebaasi mudeli üle vaidlemine ei kuulu enam teie kompetentsi, see rong on läinud ja teie peate oma rakenduse ette antud mudeli põhjal valmis tegema. Alguses realiseeritakse testimise hõlbustamiseks rakendus HSQLDB baasil, hiljem võetakse kasutusele "päris" andmebaasi mootor.
+Auditeeritavuse tagamiseks on andmebaasis igal olemil väljad: avaja, muutja, sulgeja. Nendesse väljadesse tuleb automaatselt kirjutada nimetatud toimingu "süüdlase" kasutajanimi. Lisaks on igas tabelis kuupäevad avatud, muudetud, suletud, seda isegi juhtudel kui see funktsionaalsus võiks olla dubleeritav mõne teise kuupäevavälja abil. Avatud peab alati näitama kirje loomise aega, suletud kirje "kustutamise" aega. Reaalselt ei tohi rakenduse põhivaated ühtegi rida tabelitest mitte kunagi kustutada.
+Osadel olemitel on väljad alates ja kuni. Nende väljade olemasolul on kohustuslik talletada automaatselt kirje ajalugu. Näiteks kui muudetakse üksuse alluvust, tuleb teha järgmist:
+1. Lõpetada eelmine alluvus, sättides seosetabelis kuni välja väärtuseks tänase kuupäeva 
+2. Luua seosetabelisse uus rida, kus alates välja väärtuseks on tänane kuupäev 
+Juhul kui kasutajaliideses on ette nähtud alates ja kuni väljade muutmise võimalus, tuleb tänase kuupäeva asemel kasutada kasutaja sisestatud kuupäevi.
+Kõik kuupäevaväljad, mis on andmebaasi skeemil märgitud kui NOT NULL peavad alati olema täidetud. Kuupäevad, mida ei ole võimalik veel täita (näiteks suletud), tuleb täita nn. surrogaatkuupäevaga: 9999-12-31.
+Kes tahab targaks saada võib lugeda andmebaasides harva muutuvate kirjete ajaloo talletamise meetodite kohta siit: http://en.wikipedia.org/wiki/Slowly_changing_dimension#Type_2
+
+Vihje: Mudeli suuremalt vaatamiseks kliki sellel
+Lisaks mudeli graafilisele skeemile on antud ka mudeli kirjeldus SQL failina.
+Lahenduses peavad eksisteerima vähemalt oma vaadete realiseerimiseks hädavajalikud olemid. Seotud olemid, mille detaile loodavad vaated otseselt ei redigeeri ega kuva, võivad olla realiseeritud ka vähendatud kujul: sisaldada ainult valikusisendite mõistliku kuvamise jaoks vajalikke välju (id, kood, nimetus jms).
+Kasutajaliides
+Kasutajaliidese disainerid on joonistanud kliendi soovide alusel hulga vaadete eskiise (mockups). Vaadete loogikat ja ülesehitust muuta ei tohi: kõik eskiisis toodud elemendid peavad eksisteerima ja töötama, samuti asuma eskiisis näidatud kohtades.
+Lisaks ette joonistatud vaadetele tuleb realiseerida ka seotud vaated, mida eskiisis otseselt ei ole toodud kuid mille avamiseks on ette nähtud mõni kasutajaliidese element. Näiteks kui eskiisis on nupp "Vali", "Lisa" vms, siis tuleb realiseerida eraldi vaade või mingi muu ekvivalentne funktsionaalsus, mille abil saab sobivat elementi nimekirjast valida. Samuti tuleb realiseerida redigeeritavate elementide nimekirja kuvamine.
+Kõik kuupäeva sisendid peavad olema varustatud interaktiivse kalendriga (date picker).
+NB! Vaated on meeskonna spetsiifilised vaata "Projekt (detailid)".
+Tehnilised vihjed
+GIT-ile saab öelda milliseid faile ja katalooge ei tohi versioonihaldusesse panna. Selleks tuleb teha fail .gitignore ja kirjutada need sinna sisse. Eclipse kasutajad võivad vajutada ka vastava faili peal paremat nuppu ja valida Team->Ignore.
+PS! .gitignore fail ise peaks olema github-is, siis saavad teised projekti liikmed automaatselt sama seadistuse osaliseks.
+Juba valmis tehtud projekti saab importida Eclipse-sse File->Import->Maven->Check out projects from SCM. 
+NB! samast aknast saab paigaldada Git-i connectori Mavenile.
+Andmebaasi skeemist tulenevate auditeerimisnõuete (avaja, muutja jne) tagamiseks tuleb teha igale olemile neid nõudeid realiseerivad meetodid.
+Kõige mõistlikum on kasutada kombinatsiooni Roo ja JPA vahenditest. Roo tekitab igale olemile automaatselt järgmised meetodid:
+persist - salvestab uue objekti andmebaasi 
+merge - salvestab muudetud objekti 
+remove - "kustutab" objekti (siin saab realiseerida kustutamise asemel "sulgemise") 
+findAllOlem - leiab kõik read (suletud read saab siin välja filtreerida) 
+Roo poolt genereeritud kood on hea copy-paste materjal :)
+Roo tehtud meetodite ümber kirjutamisest üksi aga ei piisa, kuna ühe merge käsuga võidakse salvestada mitu JPA olemit ja kaskaadkustutamine võib viia ikkagi mõne olemi kustutamiseni.
+Muutmiskuupäevade ja isikute kindla peale salvestamiseks ning kaskaadkustutamise vältimiseks on vaja kasutada JPA olemi elutsükli annotatsioone. Näiteks:
+    @PrePersist
+    public void recordCreated() {
+        setCreated( new Date() );
+    }
+
+    @PreUpdate
+    public void recordModified() {
+        setModified( new Date() );
+    }
+
+    @PreRemove
+    public void preventRemove() {
+        throw new SecurityException("Removing of bears is prohibited!");
+    }
+Kes oskab võib käsitöö asemel teha oma olemitele ka ühist funktsionaalsust ja väljasid sisaldava baasklassi (lihtsam) või defineerida ühiste väljade gettereid / settereid sisaldava liidese ja kirjeldada persistence.xml failis kõigile olemitele korraga kehtiva listeneri (keerulisem, loe http://docs.jboss.org/hibernate/entitymanager/3.6/reference/en/html/listeners.html).
+NB! Reflection API-t kasutada ei tohi.
+Kui kasutad Spring Security-t, siis saab kasutajanime praktiliselt igalt poolt kätte nii:
+    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+    String userName = auth.getName();
+Kontrollerites on aga veelgi lihtsam, lihtsalt lisa meetodile Principal tüüpi argument:
+    @RequestMapping(method = RequestMethod.GET)   
+    public String showResults(..., Principal principal, Model uiModel) {
+        String userName = principal.getName();
+        ...
+    }
+Vihje tegelastele, kes ei oska kirjutada Google otsingusse: 
+GitHub:help 
+Pro Git book 
+Git Reference 
+EGit ja GitHub 
+
