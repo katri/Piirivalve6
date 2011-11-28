@@ -68,25 +68,6 @@ privileged aspect PiiriloikController_Roo_Controller {
         return "piiriloiks/list";
     }
     
-    @RequestMapping(method = RequestMethod.PUT)
-    public String PiiriloikController.update(@Valid Piiriloik piiriloik, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
-        if (bindingResult.hasErrors()) {
-            uiModel.addAttribute("piiriloik", piiriloik);
-            addDateTimeFormatPatterns(uiModel);
-            return "piiriloiks/update";
-        }
-        uiModel.asMap().clear();
-        piiriloik.merge();
-        return "redirect:/piiriloiks/" + encodeUrlPathSegment(piiriloik.getPiiriloikId().toString(), httpServletRequest);
-    }
-    
-    @RequestMapping(value = "/{piiriloikId}", params = "form", method = RequestMethod.GET)
-    public String PiiriloikController.updateForm(@PathVariable("piiriloikId") Long piiriloikId, Model uiModel) {
-        uiModel.addAttribute("piiriloik", Piiriloik.findPiiriloik(piiriloikId));
-        addDateTimeFormatPatterns(uiModel);
-        return "piiriloiks/update";
-    }
-    
     @RequestMapping(value = "/{piiriloikId}", method = RequestMethod.DELETE)
     public String PiiriloikController.delete(@PathVariable("piiriloikId") Long piiriloikId, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
         Piiriloik.findPiiriloik(piiriloikId).remove();

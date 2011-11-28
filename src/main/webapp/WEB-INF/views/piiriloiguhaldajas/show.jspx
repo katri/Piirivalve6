@@ -12,8 +12,8 @@
         <field:display field="muutja" id="s_ee_itcollege_i377_team6_entities_PiiriloiguHaldaja_muutja" object="${piiriloiguhaldaja}" z="DfnHjVU/T5CRpcGPLuBxVac4MA8="/>
         <field:display date="true" dateTimePattern="${piiriloiguHaldaja_suletud_date_format}" field="suletud" id="s_ee_itcollege_i377_team6_entities_PiiriloiguHaldaja_suletud" object="${piiriloiguhaldaja}" z="3qJ+7OIonfXVWofTiTEQ4YEuBpE="/>
         <field:display field="sulgeja" id="s_ee_itcollege_i377_team6_entities_PiiriloiguHaldaja_sulgeja" object="${piiriloiguhaldaja}" z="FPFYAirf/Sl4Bzm0newLYu7yQ7k="/>
-        <field:display field="piiriloik" id="s_ee_itcollege_i377_team6_entities_PiiriloiguHaldaja_piiriloik" object="${piiriloiguhaldaja}" z="DrkYlQr3r1WWqQDuUPe2FHPdX4c="/>
-        <field:display field="piiripunkt" id="s_ee_itcollege_i377_team6_entities_PiiriloiguHaldaja_piiripunkt" object="${piiriloiguhaldaja}" z="5Znv9n9D70lDFVBNwg1LLFokWGM="/>
-        <field:display field="vaeosa" id="s_ee_itcollege_i377_team6_entities_PiiriloiguHaldaja_vaeosa" object="${piiriloiguhaldaja}" z="rZG17vmRVVmCkqAaTla2FawXW24="/>
+        <field:display field="nimetus" id="s_ee_itcollege_i377_team6_entities_PiiriloiguHaldaja_piiriloik" object="${piiriloiguhaldaja.piiriloik}" z="user-managed"/>
+        <field:display field="nimetus" id="s_ee_itcollege_i377_team6_entities_PiiriloiguHaldaja_piiripunkt" object="${piiriloiguhaldaja.piiripunkt}" z="user-managed"/>
+        <field:display field="nimetus" id="s_ee_itcollege_i377_team6_entities_PiiriloiguHaldaja_vaeosa" object="${piiriloiguhaldaja.vaeosa}" z="user-managed"/>
     </page:show>
 </div>

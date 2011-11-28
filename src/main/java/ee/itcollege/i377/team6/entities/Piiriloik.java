@@ -27,7 +27,8 @@ import org.springframework.roo.addon.tostring.RooToString;
 @RooEntity
 public class Piiriloik implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+	
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="PIIRILOIK_ID")
@@ -64,6 +65,7 @@ public class Piiriloik implements Serializable {
 	@OneToMany(mappedBy="piiriloik")
 	private Set<PiiriloiguHaldaja> piiriloiguHaldajas;
 
+	
 	//bi-directional many-to-one association to VahtkonndPiiriloigul
 	@OneToMany(mappedBy="piiriloik")
 	private Set<VahtkonndPiiriloigul> vahtkonndPiiriloiguls;
@@ -163,9 +165,44 @@ public class Piiriloik implements Serializable {
 		return this.piiriloiguHaldajas;
 	}
 
-	public void setPiiriloiguHaldajas(Set<PiiriloiguHaldaja> piiriloiguHaldajas) {
-		this.piiriloiguHaldajas = piiriloiguHaldajas;
+
+	
+	public void setPiiriloiguHaldajas(Set<PiiriloiguHaldaja> param) {
+		manageRelations(this.piiriloiguHaldajas, param);
+		this.piiriloiguHaldajas = param;
 	}
+
+	private void manageRelations(Set<PiiriloiguHaldaja> oldPiiriloiguHaldajas, Set<PiiriloiguHaldaja> newPiiriloiguHaldajas) {
+		if(oldPiiriloiguHaldajas != null) {
+			for(PiiriloiguHaldaja p: oldPiiriloiguHaldajas)
+				if(newPiiriloiguHaldajas == null || !newPiiriloiguHaldajas.contains(p))
+					p.setPiiriloik(null);
+		}
+
+		if(newPiiriloiguHaldajas != null) {
+			for(PiiriloiguHaldaja p: newPiiriloiguHaldajas)
+				p.setPiiriloik(this);
+		}
+	}
+	
+    public Piiriloik merge() {
+       if (this.entityManager == null) 
+        	this.entityManager = entityManager();
+
+	if(this.piiriloikId != null && !entityManager.contains(this)) {
+		// This was a detached entity, manage Piirilõiguhaldajaid correctly
+		Piiriloik oldPiiriloik = findPiiriloik(this.piiriloikId);
+		manageRelations(oldPiiriloik.getPiiriloiguHaldajas(), this.piiriloiguHaldajas);
+        }
+
+	Piiriloik merged = this.entityManager.merge(this);
+        this.entityManager.flush();
+        return merged;
+    }
+    
+	
+	
+	
 	
 	public Set<VahtkonndPiiriloigul> getVahtkonndPiiriloiguls() {
 		return this.vahtkonndPiiriloiguls;

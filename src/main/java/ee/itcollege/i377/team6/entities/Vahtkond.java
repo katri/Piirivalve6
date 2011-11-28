@@ -15,6 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.roo.addon.entity.RooEntity;
 import org.springframework.roo.addon.tostring.RooToString;
 
@@ -34,30 +35,35 @@ public class Vahtkond implements Serializable {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="VAHTKOND_ID")
 	private Long vahtkondId;
-
-    @Temporal( TemporalType.DATE)
+	
+	@Temporal( TemporalType.DATE)
+	@DateTimeFormat(style = "M-")
 	private Date alates;
 
 	private String avaja;
-
-    @Temporal( TemporalType.DATE)
+	
+	@Temporal( TemporalType.DATE)
+	@DateTimeFormat(style = "M-")
 	private Date avatud;
 
 	private String kommentaar;
 
 	private String kood;
-
-    @Temporal( TemporalType.DATE)
+	
+	@Temporal( TemporalType.DATE)
+	@DateTimeFormat(style = "M-")
 	private Date kuni;
-
-    @Temporal( TemporalType.DATE)
+	 
+	@Temporal( TemporalType.DATE)
+	@DateTimeFormat(style = "M-")
 	private Date muudetud;
 
 	private String muutja;
 
 	private String nimetus;
-
-    @Temporal( TemporalType.DATE)
+	
+	@Temporal( TemporalType.DATE)
+	@DateTimeFormat(style = "M-")
 	private Date suletud;
 
 	private String sulgeja;
