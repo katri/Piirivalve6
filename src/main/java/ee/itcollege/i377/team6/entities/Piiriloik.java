@@ -135,7 +135,7 @@ public class Piiriloik implements Serializable {
 			workObject.setAvatud(now);
 			workObject.setMuudetud(future);
 			workObject.setMuutja(userName);
-			// ei ole vist vaja-tuleb ise? workObject.setPiiriloiguHaldajaId();
+			// ei ole vist vaja-tuleb is? workObject.setPiiriloiguHaldajaId();
 			workObject.setPiiriloik(this);
 			workObject.setPiiripunkt(null);
 			workObject.setSuletud(future);
@@ -158,7 +158,7 @@ public class Piiriloik implements Serializable {
 		// Kui uus väeosa ID on sama, mis uus ja kuni kpv on täna või hilisem siis ei tehta midagi - st tagastatkse sama set.
 		}
 		
-		return getPiiriloiguHaldajas();
+		return (Set<PiiriloiguHaldaja>) PiiriloiguHaldaja.findAllPiiriloiguHaldajas();
 	}
 	
 	
