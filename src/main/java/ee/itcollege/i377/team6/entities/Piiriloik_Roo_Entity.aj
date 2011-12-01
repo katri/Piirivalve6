@@ -59,6 +59,14 @@ privileged aspect Piiriloik_Roo_Entity {
         this.entityManager.clear();
     }
     
+    @Transactional
+    public Piiriloik Piiriloik.merge() {
+        if (this.entityManager == null) this.entityManager = entityManager();
+        Piiriloik merged = this.entityManager.merge(this);
+        this.entityManager.flush();
+        return merged;
+    }
+    
     public static final EntityManager Piiriloik.entityManager() {
         EntityManager em = new Piiriloik().entityManager;
         if (em == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");

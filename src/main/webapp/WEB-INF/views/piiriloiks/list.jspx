@@ -9,7 +9,7 @@
             <table:column id="c_ee_itcollege_i377_team6_entities_Piiriloik_gpsKoordinaadid" property="gpsKoordinaadid" z="GKeDZWbvagtEmYPpQjgR8fe2VnM="/>
             <table:column id="c_ee_itcollege_i377_team6_entities_Piiriloik_kommentaar" property="kommentaar" z="sQoDUlSfKlqB1h9VX9pZXa+ZVOM="/>
             <table:column id="c_ee_itcollege_i377_team6_entities_Piiriloik_kood" property="kood" z="MgODguOPUSVomnFjjicbU/CH4j8="/>
-            <table:column date="true" dateTimePattern="${piiriloik_muudetud_date_format}" id="c_ee_itcollege_i377_team6_entities_Piiriloik_muudetud" property="muudetud" z="AdKrlNcpx+dlW4DBlCkfMUmOD60="/>
+            <table:column id="c_ee_itcollege_i377_team6_entities_Piiriloik_vahtkonndPiiriloiguls" property="vahtkonndPiiriloiguls" z="j+JrpOAgR4niB79vJ+CM6j/vP+w="/>
         </table:table>
     </page:list>
 </div>

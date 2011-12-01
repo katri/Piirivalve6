@@ -3,7 +3,6 @@
 
 package ee.itcollege.i377.team6.web;
 
-import ee.itcollege.i377.team6.entities.PiiriloiguHaldaja;
 import ee.itcollege.i377.team6.entities.Piiriloik;
 import ee.itcollege.i377.team6.entities.VahtkonndPiiriloigul;
 import java.io.UnsupportedEncodingException;
@@ -75,11 +74,6 @@ privileged aspect PiiriloikController_Roo_Controller {
         uiModel.addAttribute("page", (page == null) ? "1" : page.toString());
         uiModel.addAttribute("size", (size == null) ? "10" : size.toString());
         return "redirect:/piiriloiks";
-    }
-    
-    @ModelAttribute("piiriloiguhaldajas")
-    public Collection<PiiriloiguHaldaja> PiiriloikController.populatePiiriloiguHaldajas() {
-        return PiiriloiguHaldaja.findAllPiiriloiguHaldajas();
     }
     
     @ModelAttribute("piiriloiks")

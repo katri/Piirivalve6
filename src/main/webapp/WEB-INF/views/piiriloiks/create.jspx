@@ -13,7 +13,6 @@
         <field:input field="nimetus" id="c_ee_itcollege_i377_team6_entities_Piiriloik_nimetus" z="5TT51cxGblra7ovbyf8YlkGxaVM="/>
         <field:datetime dateTimePattern="${piiriloik_suletud_date_format}" field="suletud" id="c_ee_itcollege_i377_team6_entities_Piiriloik_suletud" z="sK9fo4X295dQYFFUqMgfyNGR/fA="/>
         <field:input field="sulgeja" id="c_ee_itcollege_i377_team6_entities_Piiriloik_sulgeja" z="DAa3tckZTKqaQf/VJ6qY6wdMiUA="/>
-        <field:simple field="piiriloiguHaldajas" id="c_ee_itcollege_i377_team6_entities_Piiriloik_piiriloiguHaldajas" messageCode="entity_reference_not_managed" messageCodeAttribute="Piiriloigu Haldaja" z="BGyc/JfN6OjfduPOejeY71TV+no="/>
         <field:simple field="vahtkonndPiiriloiguls" id="c_ee_itcollege_i377_team6_entities_Piiriloik_vahtkonndPiiriloiguls" messageCode="entity_reference_not_managed" messageCodeAttribute="Vahtkonnd Piiriloigul" z="Zoq6N1pom362CP4cppvqfjfF7ck="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_ee_itcollege_i377_team6_entities_Piiriloik" render="${not empty dependencies}" z="5I9Xkzq3gMtdoliW6NBLstDesfg="/>

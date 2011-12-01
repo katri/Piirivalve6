@@ -1,6 +1,9 @@
 package ee.itcollege.i377.team6.entities;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Set;
 
@@ -16,6 +19,8 @@ import javax.persistence.TemporalType;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.roo.addon.entity.RooEntity;
 import org.springframework.roo.addon.tostring.RooToString;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 
 /**
@@ -72,7 +77,100 @@ public class Piiriloik implements Serializable {
 
     public Piiriloik() {
     }
+    //haldajaMuutmine
+	
 
+	public Set<PiiriloiguHaldaja> getPiiriloiguHaldajas() {
+		return this.piiriloiguHaldajas;
+	}
+
+
+	// Määrab piirilõiguhaldajate setiks parasjagu need read, mis piirilõiguhaldajate olemis
+	// selle konkreetse piirilõigu ID-d omavad
+	public void setPiiriloiguHaldajas(Vaeosa newVaeosa) throws ParseException {
+		this.piiriloiguHaldajas = manageRelations(this.piiriloiguHaldajas, newVaeosa);
+	}
+	
+/*Haldab piirilõiguhaldaja tabeli muudatusi ja logimist selles
+	Esiteks: Kui vana piirilõiguhaldaja set on tühi, siis teeme lihtsalt uue kirje.	
+	Teiseks: Leiame kõige uuema kuupäevaga "kuni" kirje vanas piiriloiguhaldaja setis. 
+	Teiseks:
+		Kui uus väeosa ID on sama, mis uus ja kuni kpv on täna või hilisem siis ei tehta midagi - st tagastatkse sama set.
+		
+		Kui uus väeosa ID on sama, mis uus ja kuni kpv on tänasest varasem, siis on tegemist
+		uue kirje lisamisega: alates, avaja ja avatud. Lisame ka piirilõigu ID ja ja uue väeosa ID.
+		
+		Kui vana väeosa ID on tühi, ja uus on olemas, siis muudetakse välju alates, avaja ja avatud.
+			Lisame ka piirilõigu ID ja ja uue väeosa ID.
+		
+		Kui vana väeosa ID!=uue väeosa ID ja vana ning uus on olemas, siis :
+			Vana rida: täidame väljad muutja, muudetud ja kuni=tänane kpv.
+			Uus rida: Täidame välja alates, mis on sama, mis vana rea kuni e tänane kpv. 
+				Täidame ka väljad avaja ja avatud=tänane kpv. Lisame ka piirilõigu ID ja ja uue väeosa ID. 
+		
+		Kui vana väeosa ID on olemas aga uus on tühi, siis uut rida ei tehta. Vana reaga:
+			täidame väljad muutja, muudetud=tänane kpv ja kuni=tänane kpv.
+*/
+	private Set<PiiriloiguHaldaja> manageRelations(Set<PiiriloiguHaldaja> oldSet, Vaeosa newVaeosa) throws ParseException {
+		
+		// Tänast kuupäeva läheb ikka vaja
+		DateFormat dateFormat = new SimpleDateFormat("yyyy.mm.dd");		
+		Date now = new Date();
+		
+		//kauge tulevik
+		
+		Date future = (Date)dateFormat.parse("31.12.9999"); 
+		
+		//kasutajanimi
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	    String userName = auth.getName();
+		
+		//Teeme tagastatava uue piirilõiguHaldaja objekti
+		PiiriloiguHaldaja workObject=null;
+		
+		// Kui vana set on tühi, siis teeme lihtsalt uue kirje
+		if(oldSet==null){
+			workObject.setAlates(now);
+			workObject.setAvaja(userName);
+			workObject.setAvatud(now);
+			workObject.setMuudetud(future);
+			workObject.setMuutja(userName);
+			// ei ole vist vaja-tuleb ise? workObject.setPiiriloiguHaldajaId();
+			workObject.setPiiriloik(this);
+			workObject.setPiiripunkt(null);
+			workObject.setSuletud(future);
+			workObject.setSulgeja(userName);
+			workObject.setVaeosa(newVaeosa);
+			
+			
+		}
+		else{
+		
+		//Leiame kõige uuema kuupäevaga "kuni" kirje vanas piiriloiguhaldaja setis. 
+		Date uusimKpv;
+		uusimKpv=null;
+		
+		for(PiiriloiguHaldaja o: oldSet) {
+			if (uusimKpv.before(o.getKuni()))
+				uusimKpv=o.getKuni();
+				workObject=o;
+		}
+		// Kui uus väeosa ID on sama, mis uus ja kuni kpv on täna või hilisem siis ei tehta midagi - st tagastatkse sama set.
+		}
+		
+		return getPiiriloiguHaldajas();
+	}
+	
+	
+	
+	
+	public Set<VahtkonndPiiriloigul> getVahtkonndPiiriloiguls() {
+		return this.vahtkonndPiiriloiguls;
+	}
+
+	public void setVahtkonndPiiriloiguls(Set<VahtkonndPiiriloigul> vahtkonndPiiriloiguls) {
+		this.vahtkonndPiiriloiguls = vahtkonndPiiriloiguls;
+	}
 	public Long getPiiriloikId() {
 		return this.piiriloikId;
 	}
@@ -160,56 +258,4 @@ public class Piiriloik implements Serializable {
 	public void setSulgeja(String sulgeja) {
 		this.sulgeja = sulgeja;
 	}
-
-	public Set<PiiriloiguHaldaja> getPiiriloiguHaldajas() {
-		return this.piiriloiguHaldajas;
-	}
-
-
-	
-	public void setPiiriloiguHaldajas(Set<PiiriloiguHaldaja> param) {
-		manageRelations(this.piiriloiguHaldajas, param);
-		this.piiriloiguHaldajas = param;
-	}
-
-	private void manageRelations(Set<PiiriloiguHaldaja> oldPiiriloiguHaldajas, Set<PiiriloiguHaldaja> newPiiriloiguHaldajas) {
-		if(oldPiiriloiguHaldajas != null) {
-			for(PiiriloiguHaldaja p: oldPiiriloiguHaldajas)
-				if(newPiiriloiguHaldajas == null || !newPiiriloiguHaldajas.contains(p))
-					p.setPiiriloik(null);
-		}
-
-		if(newPiiriloiguHaldajas != null) {
-			for(PiiriloiguHaldaja p: newPiiriloiguHaldajas)
-				p.setPiiriloik(this);
-		}
-	}
-	
-    public Piiriloik merge() {
-       if (this.entityManager == null) 
-        	this.entityManager = entityManager();
-
-	if(this.piiriloikId != null && !entityManager.contains(this)) {
-		// This was a detached entity, manage Piirilõiguhaldajaid correctly
-		Piiriloik oldPiiriloik = findPiiriloik(this.piiriloikId);
-		manageRelations(oldPiiriloik.getPiiriloiguHaldajas(), this.piiriloiguHaldajas);
-        }
-
-	Piiriloik merged = this.entityManager.merge(this);
-        this.entityManager.flush();
-        return merged;
-    }
-    
-	
-	
-	
-	
-	public Set<VahtkonndPiiriloigul> getVahtkonndPiiriloiguls() {
-		return this.vahtkonndPiiriloiguls;
-	}
-
-	public void setVahtkonndPiiriloiguls(Set<VahtkonndPiiriloigul> vahtkonndPiiriloiguls) {
-		this.vahtkonndPiiriloiguls = vahtkonndPiiriloiguls;
-	}
-	
 }
