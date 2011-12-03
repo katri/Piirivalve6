@@ -4,12 +4,12 @@
     <jsp:output omit-xml-declaration="yes"/>
     <page:list id="pl_ee_itcollege_i377_team6_entities_PiiriloiguHaldaja" items="${piiriloiguhaldajas}" z="UK1w3ErZL9Um3LUsqeAyaRArrXM=">
         <table:table data="${piiriloiguhaldajas}" id="l_ee_itcollege_i377_team6_entities_PiiriloiguHaldaja" path="/piiriloiguhaldajas" typeIdFieldName="piiriloiguHaldajaId" z="dfvVcxTwUbeIoS/fTE7HNyTYAvM=">
-            <table:column date="true" dateTimePattern="${piiriloiguHaldaja_alates_date_format}" id="c_ee_itcollege_i377_team6_entities_PiiriloiguHaldaja_alates" property="alates" z="oUnW2SkdfGTsMdkhPlZRmlBJjY8="/>
-            <table:column id="c_ee_itcollege_i377_team6_entities_PiiriloiguHaldaja_avaja" property="avaja" z="VXNZ2wdRRRjr/kzx32hoh0XBwvA="/>
-            <table:column date="true" dateTimePattern="${piiriloiguHaldaja_avatud_date_format}" id="c_ee_itcollege_i377_team6_entities_PiiriloiguHaldaja_avatud" property="avatud" z="Y6S+rHNTXDcna+iMl3v/IE1ZlAk="/>
             <table:column id="c_ee_itcollege_i377_team6_entities_PiiriloiguHaldaja_kommentaar" property="kommentaar" z="iF17cwvlz5d86qrM2SP9Gn03p3A="/>
-            <table:column date="true" dateTimePattern="${piiriloiguHaldaja_kuni_date_format}" id="c_ee_itcollege_i377_team6_entities_PiiriloiguHaldaja_kuni" property="kuni" z="dbicC4KvB2VCBArrZ0l/VQx91LI="/>
-            <table:column date="true" dateTimePattern="${piiriloiguHaldaja_muudetud_date_format}" id="c_ee_itcollege_i377_team6_entities_PiiriloiguHaldaja_muudetud" property="muudetud" z="JycaWC+d6sXNydROLDj0Gev9g0c="/>
+            <table:column id="c_ee_itcollege_i377_team6_entities_PiiriloiguHaldaja_avaja" property="avaja" z="VXNZ2wdRRRjr/kzx32hoh0XBwvA="/>
+            <table:column calendar="true" dateTimePattern="${piiriloiguHaldaja_avatud_date_format}" id="c_ee_itcollege_i377_team6_entities_PiiriloiguHaldaja_avatud" property="avatud" z="QPyV4L0cu6LwpL8nAxDsnzc+b0c="/>
+            <table:column id="c_ee_itcollege_i377_team6_entities_PiiriloiguHaldaja_muutja" property="muutja" z="gzgdMQb9VHL/CdXs9gmfrcM4p+g="/>
+            <table:column calendar="true" dateTimePattern="${piiriloiguHaldaja_muudetud_date_format}" id="c_ee_itcollege_i377_team6_entities_PiiriloiguHaldaja_muudetud" property="muudetud" z="SFkAwpY48xkp0rSyTlkmqCinWtc="/>
+            <table:column id="c_ee_itcollege_i377_team6_entities_PiiriloiguHaldaja_sulgeja" property="sulgeja" z="xHvRrqiUP/Lvec3X7c0+81ZBaAI="/>
         </table:table>
     </page:list>
 </div>

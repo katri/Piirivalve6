@@ -112,11 +112,11 @@ privileged aspect VahtkonndPiiriloigulController_Roo_Controller {
     }
     
     void VahtkonndPiiriloigulController.addDateTimeFormatPatterns(Model uiModel) {
-        uiModel.addAttribute("vahtkonndPiiriloigul_alates_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
         uiModel.addAttribute("vahtkonndPiiriloigul_avatud_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
-        uiModel.addAttribute("vahtkonndPiiriloigul_kuni_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
         uiModel.addAttribute("vahtkonndPiiriloigul_muudetud_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
         uiModel.addAttribute("vahtkonndPiiriloigul_suletud_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
+        uiModel.addAttribute("vahtkonndPiiriloigul_alates_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
+        uiModel.addAttribute("vahtkonndPiiriloigul_kuni_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
     }
     
     String VahtkonndPiiriloigulController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {

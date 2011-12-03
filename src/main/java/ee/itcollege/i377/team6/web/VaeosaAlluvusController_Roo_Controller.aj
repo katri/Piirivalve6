@@ -106,11 +106,11 @@ privileged aspect VaeosaAlluvusController_Roo_Controller {
     }
     
     void VaeosaAlluvusController.addDateTimeFormatPatterns(Model uiModel) {
-        uiModel.addAttribute("vaeosaAlluvus_alates_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
         uiModel.addAttribute("vaeosaAlluvus_avatud_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
-        uiModel.addAttribute("vaeosaAlluvus_kuni_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
         uiModel.addAttribute("vaeosaAlluvus_muudetud_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
         uiModel.addAttribute("vaeosaAlluvus_suletud_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
+        uiModel.addAttribute("vaeosaAlluvus_alates_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
+        uiModel.addAttribute("vaeosaAlluvus_kuni_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
     }
     
     String VaeosaAlluvusController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {

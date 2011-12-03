@@ -4,12 +4,12 @@
     <jsp:output omit-xml-declaration="yes"/>
     <page:list id="pl_ee_itcollege_i377_team6_entities_VaeosaAlluvus" items="${vaeosaalluvuses}" z="Ld9xOmc4rgoyMDpkJ+bb80jwucA=">
         <table:table data="${vaeosaalluvuses}" id="l_ee_itcollege_i377_team6_entities_VaeosaAlluvus" path="/vaeosaalluvuses" typeIdFieldName="vaeosaAlluvusId" z="FDXLChuMdZi0wJkeMrdC83edNDM=">
-            <table:column date="true" dateTimePattern="${vaeosaAlluvus_alates_date_format}" id="c_ee_itcollege_i377_team6_entities_VaeosaAlluvus_alates" property="alates" z="c3mFB9FjyyEinRXYXWpk4P/6ikY="/>
-            <table:column id="c_ee_itcollege_i377_team6_entities_VaeosaAlluvus_avaja" property="avaja" z="/AoXqYSa2YWbk+y065ywY8lKbMY="/>
-            <table:column date="true" dateTimePattern="${vaeosaAlluvus_avatud_date_format}" id="c_ee_itcollege_i377_team6_entities_VaeosaAlluvus_avatud" property="avatud" z="m7WMdQ+NQvh3dSQ5C7aEvpp9tVk="/>
             <table:column id="c_ee_itcollege_i377_team6_entities_VaeosaAlluvus_kommentaar" property="kommentaar" z="Uy0oNzZb8XSwDZt5WbNtSf4y5Nk="/>
-            <table:column date="true" dateTimePattern="${vaeosaAlluvus_kuni_date_format}" id="c_ee_itcollege_i377_team6_entities_VaeosaAlluvus_kuni" property="kuni" z="BOXUyS1aAXUPRUWUvmDkIB29X8Q="/>
-            <table:column date="true" dateTimePattern="${vaeosaAlluvus_muudetud_date_format}" id="c_ee_itcollege_i377_team6_entities_VaeosaAlluvus_muudetud" property="muudetud" z="T8Va7pdrmp6+aJ3h+bidcCzWctw="/>
+            <table:column id="c_ee_itcollege_i377_team6_entities_VaeosaAlluvus_avaja" property="avaja" z="/AoXqYSa2YWbk+y065ywY8lKbMY="/>
+            <table:column calendar="true" dateTimePattern="${vaeosaAlluvus_avatud_date_format}" id="c_ee_itcollege_i377_team6_entities_VaeosaAlluvus_avatud" property="avatud" z="DpOA7EwxrpmmTf9noq4UPkkVTTU="/>
+            <table:column id="c_ee_itcollege_i377_team6_entities_VaeosaAlluvus_muutja" property="muutja" z="ri1iYIOL1gKuOUKvBW20Dn6v4IU="/>
+            <table:column calendar="true" dateTimePattern="${vaeosaAlluvus_muudetud_date_format}" id="c_ee_itcollege_i377_team6_entities_VaeosaAlluvus_muudetud" property="muudetud" z="a3WBk5Fek2LyFAqLf73uU6Uw5HU="/>
+            <table:column id="c_ee_itcollege_i377_team6_entities_VaeosaAlluvus_sulgeja" property="sulgeja" z="kdhCWSh4OLYCdx8cor7bG9ti/Rg="/>
         </table:table>
     </page:list>
 </div>

@@ -24,7 +24,7 @@ import org.springframework.roo.addon.tostring.RooToString;
 @RooEntity
 
 @Table(name="RIIGI_ADMIN_YKSUS")
-public class RiigiAdminYksus implements Serializable {
+public class RiigiAdminYksus extends BaseEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id

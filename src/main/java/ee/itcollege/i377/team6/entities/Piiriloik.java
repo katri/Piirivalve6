@@ -30,7 +30,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 @Entity
 @RooToString
 @RooEntity
-public class Piiriloik implements Serializable {
+public class Piiriloik extends BaseEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	
@@ -39,32 +39,18 @@ public class Piiriloik implements Serializable {
 	@Column(name="PIIRILOIK_ID")
 	private Long piiriloikId;
 
-	private String avaja;
-
-    @Temporal( TemporalType.DATE)
-    @DateTimeFormat(style = "M-")
-	private Date avatud;
-
+  
+    	
 	@Column(name="GPS_KOORDINAADID")
 	private String gpsKoordinaadid;
 
-	private String kommentaar;
-
 	private String kood;
 
-    @Temporal( TemporalType.DATE)
-    @DateTimeFormat(style = "M-")
-	private Date muudetud;
-
-	private String muutja;
-
-	private String nimetus;
+  	private String nimetus;
 
     @Temporal( TemporalType.DATE)
     @DateTimeFormat(style = "M-")
-	private Date suletud;
-
-	private String sulgeja;
+	
 
 	//bi-directional many-to-one association to PiiriloiguHaldaja
 	@OneToMany(mappedBy="piiriloik")
@@ -133,15 +119,16 @@ public class Piiriloik implements Serializable {
 		
 		// Kui vana set on tühi, siis teeme lihtsalt uue kirje
 		if(oldSet==null){
-			workObject.setAlates(now);
+			//workObject.setAlates(now);
 			workObject.setAvaja(userName);
-			workObject.setAvatud(now);
-			workObject.setMuudetud(future);
+			//workObject.setAvatud(now);
+			//workObject.setMuudetud(future);
 			workObject.setMuutja(userName);
 			// ei ole vist vaja-tuleb is? workObject.setPiiriloiguHaldajaId();
 			workObject.setPiiriloik(this);
 			workObject.setPiiripunkt(null);
-			workObject.setSuletud(future);
+			//workObject.setSuletud(future);
+			
 			workObject.setSulgeja(userName);
 			workObject.setVaeosa(newVaeosa);
 			
@@ -153,11 +140,11 @@ public class Piiriloik implements Serializable {
 		Date uusimKpv;
 		uusimKpv=null;
 		
-		for(PiiriloiguHaldaja o: oldSet) {
+/*		for(PiiriloiguHaldaja o: oldSet) {
 			if (uusimKpv.before(o.getKuni()))
 				uusimKpv=o.getKuni();
 				workObject=o;
-		}
+		}*/
 		// Kui uus väeosa ID on sama, mis uus ja kuni kpv on täna või hilisem siis ei tehta midagi - st tagastatkse sama set.
 		}
 		
@@ -182,23 +169,7 @@ public class Piiriloik implements Serializable {
 		this.piiriloikId = piiriloikId;
 	}
 
-	public String getAvaja() {
-		return this.avaja;
-	}
-
-	public void setAvaja(String avaja) {
-		this.avaja = avaja;
-	}
-
-	public Date getAvatud() {
-		return this.avatud;
-	}
-
-	public void setAvatud(Date avatud) {
-		this.avatud = avatud;
-	}
-
-	public String getGpsKoordinaadid() {
+		public String getGpsKoordinaadid() {
 		return this.gpsKoordinaadid;
 	}
 
@@ -206,13 +177,7 @@ public class Piiriloik implements Serializable {
 		this.gpsKoordinaadid = gpsKoordinaadid;
 	}
 
-	public String getKommentaar() {
-		return this.kommentaar;
-	}
 
-	public void setKommentaar(String kommentaar) {
-		this.kommentaar = kommentaar;
-	}
 
 	public String getKood() {
 		return this.kood;
@@ -222,21 +187,7 @@ public class Piiriloik implements Serializable {
 		this.kood = kood;
 	}
 
-	public Date getMuudetud() {
-		return this.muudetud;
-	}
 
-	public void setMuudetud(Date muudetud) {
-		this.muudetud = muudetud;
-	}
-
-	public String getMuutja() {
-		return this.muutja;
-	}
-
-	public void setMuutja(String muutja) {
-		this.muutja = muutja;
-	}
 
 	public String getNimetus() {
 		return this.nimetus;
@@ -246,19 +197,5 @@ public class Piiriloik implements Serializable {
 		this.nimetus = nimetus;
 	}
 
-	public Date getSuletud() {
-		return this.suletud;
-	}
 
-	public void setSuletud(Date suletud) {
-		this.suletud = suletud;
-	}
-
-	public String getSulgeja() {
-		return this.sulgeja;
-	}
-
-	public void setSulgeja(String sulgeja) {
-		this.sulgeja = sulgeja;
-	}
 }

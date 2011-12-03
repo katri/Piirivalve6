@@ -10,16 +10,16 @@ privileged aspect Piiriloik_Roo_ToString {
     public String Piiriloik.toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Avaja: ").append(getAvaja()).append(", ");
-        sb.append("Avatud: ").append(getAvatud()).append(", ");
+        sb.append("Avatud: ").append(getAvatud() == null ? "null" : getAvatud().getTime()).append(", ");
         sb.append("GpsKoordinaadid: ").append(getGpsKoordinaadid()).append(", ");
         sb.append("Kommentaar: ").append(getKommentaar()).append(", ");
         sb.append("Kood: ").append(getKood()).append(", ");
-        sb.append("Muudetud: ").append(getMuudetud()).append(", ");
+        sb.append("Muudetud: ").append(getMuudetud() == null ? "null" : getMuudetud().getTime()).append(", ");
         sb.append("Muutja: ").append(getMuutja()).append(", ");
         sb.append("Nimetus: ").append(getNimetus()).append(", ");
         sb.append("PiiriloiguHaldajas: ").append(getPiiriloiguHaldajas() == null ? "null" : getPiiriloiguHaldajas().size()).append(", ");
         sb.append("PiiriloikId: ").append(getPiiriloikId()).append(", ");
-        sb.append("Suletud: ").append(getSuletud()).append(", ");
+        sb.append("Suletud: ").append(getSuletud() == null ? "null" : getSuletud().getTime()).append(", ");
         sb.append("Sulgeja: ").append(getSulgeja()).append(", ");
         sb.append("VahtkonndPiiriloiguls: ").append(getVahtkonndPiiriloiguls() == null ? "null" : getVahtkonndPiiriloiguls().size()).append(", ");
         sb.append("Version: ").append(getVersion());

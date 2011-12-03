@@ -12,6 +12,8 @@ import java.lang.String;
 import java.util.Collection;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import org.joda.time.format.DateTimeFormat;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -28,6 +30,7 @@ privileged aspect RiigiAdminYksusController_Roo_Controller {
     public String RiigiAdminYksusController.create(@Valid RiigiAdminYksus riigiAdminYksus, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
         if (bindingResult.hasErrors()) {
             uiModel.addAttribute("riigiAdminYksus", riigiAdminYksus);
+            addDateTimeFormatPatterns(uiModel);
             return "riigiadminyksuses/create";
         }
         uiModel.asMap().clear();
@@ -38,11 +41,13 @@ privileged aspect RiigiAdminYksusController_Roo_Controller {
     @RequestMapping(params = "form", method = RequestMethod.GET)
     public String RiigiAdminYksusController.createForm(Model uiModel) {
         uiModel.addAttribute("riigiAdminYksus", new RiigiAdminYksus());
+        addDateTimeFormatPatterns(uiModel);
         return "riigiadminyksuses/create";
     }
     
     @RequestMapping(value = "/{riigiAdminYksusId}", method = RequestMethod.GET)
     public String RiigiAdminYksusController.show(@PathVariable("riigiAdminYksusId") Long riigiAdminYksusId, Model uiModel) {
+        addDateTimeFormatPatterns(uiModel);
         uiModel.addAttribute("riigiadminyksus", RiigiAdminYksus.findRiigiAdminYksus(riigiAdminYksusId));
         uiModel.addAttribute("itemId", riigiAdminYksusId);
         return "riigiadminyksuses/show";
@@ -58,6 +63,7 @@ privileged aspect RiigiAdminYksusController_Roo_Controller {
         } else {
             uiModel.addAttribute("riigiadminyksuses", RiigiAdminYksus.findAllRiigiAdminYksuses());
         }
+        addDateTimeFormatPatterns(uiModel);
         return "riigiadminyksuses/list";
     }
     
@@ -65,6 +71,7 @@ privileged aspect RiigiAdminYksusController_Roo_Controller {
     public String RiigiAdminYksusController.update(@Valid RiigiAdminYksus riigiAdminYksus, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
         if (bindingResult.hasErrors()) {
             uiModel.addAttribute("riigiAdminYksus", riigiAdminYksus);
+            addDateTimeFormatPatterns(uiModel);
             return "riigiadminyksuses/update";
         }
         uiModel.asMap().clear();
@@ -75,6 +82,7 @@ privileged aspect RiigiAdminYksusController_Roo_Controller {
     @RequestMapping(value = "/{riigiAdminYksusId}", params = "form", method = RequestMethod.GET)
     public String RiigiAdminYksusController.updateForm(@PathVariable("riigiAdminYksusId") Long riigiAdminYksusId, Model uiModel) {
         uiModel.addAttribute("riigiAdminYksus", RiigiAdminYksus.findRiigiAdminYksus(riigiAdminYksusId));
+        addDateTimeFormatPatterns(uiModel);
         return "riigiadminyksuses/update";
     }
     
@@ -95,6 +103,12 @@ privileged aspect RiigiAdminYksusController_Roo_Controller {
     @ModelAttribute("vaeosas")
     public Collection<Vaeosa> RiigiAdminYksusController.populateVaeosas() {
         return Vaeosa.findAllVaeosas();
+    }
+    
+    void RiigiAdminYksusController.addDateTimeFormatPatterns(Model uiModel) {
+        uiModel.addAttribute("riigiAdminYksus_avatud_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
+        uiModel.addAttribute("riigiAdminYksus_muudetud_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
+        uiModel.addAttribute("riigiAdminYksus_suletud_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
     }
     
     String RiigiAdminYksusController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {

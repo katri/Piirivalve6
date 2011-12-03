@@ -118,11 +118,11 @@ privileged aspect PiiripunktController_Roo_Controller {
     }
     
     void PiiripunktController.addDateTimeFormatPatterns(Model uiModel) {
-        uiModel.addAttribute("piiripunkt_alates_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
         uiModel.addAttribute("piiripunkt_avatud_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
-        uiModel.addAttribute("piiripunkt_kuni_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
         uiModel.addAttribute("piiripunkt_muudetud_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
         uiModel.addAttribute("piiripunkt_suletud_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
+        uiModel.addAttribute("piiripunkt_alates_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
+        uiModel.addAttribute("piiripunkt_kuni_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
     }
     
     String PiiripunktController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {

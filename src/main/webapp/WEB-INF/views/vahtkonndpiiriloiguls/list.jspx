@@ -4,12 +4,12 @@
     <jsp:output omit-xml-declaration="yes"/>
     <page:list id="pl_ee_itcollege_i377_team6_entities_VahtkonndPiiriloigul" items="${vahtkonndpiiriloiguls}" z="yViQ1+xJVg3fhcNKhy7S5bYveYM=">
         <table:table data="${vahtkonndpiiriloiguls}" id="l_ee_itcollege_i377_team6_entities_VahtkonndPiiriloigul" path="/vahtkonndpiiriloiguls" typeIdFieldName="vahtkondPiiriloiulId" z="OMoEXHAFt8xXnWrNFUNCUEYuus4=">
-            <table:column date="true" dateTimePattern="${vahtkonndPiiriloigul_alates_date_format}" id="c_ee_itcollege_i377_team6_entities_VahtkonndPiiriloigul_alates" property="alates" z="Z0TEYBDYTtnwOnOPSyz0r1ZM2sk="/>
-            <table:column id="c_ee_itcollege_i377_team6_entities_VahtkonndPiiriloigul_avaja" property="avaja" z="Qi/MUQwtgNIo2b6QUmmaJsF7VqA="/>
-            <table:column date="true" dateTimePattern="${vahtkonndPiiriloigul_avatud_date_format}" id="c_ee_itcollege_i377_team6_entities_VahtkonndPiiriloigul_avatud" property="avatud" z="XIXLyha6Y5UmUj12SgCsY7N7Jeg="/>
             <table:column id="c_ee_itcollege_i377_team6_entities_VahtkonndPiiriloigul_kommentaar" property="kommentaar" z="+VNC3YxSZXuYhW4XvsFROFT5P+A="/>
-            <table:column date="true" dateTimePattern="${vahtkonndPiiriloigul_kuni_date_format}" id="c_ee_itcollege_i377_team6_entities_VahtkonndPiiriloigul_kuni" property="kuni" z="Xxw9/8x/3KjiahY1cW/uq6BML0s="/>
-            <table:column date="true" dateTimePattern="${vahtkonndPiiriloigul_muudetud_date_format}" id="c_ee_itcollege_i377_team6_entities_VahtkonndPiiriloigul_muudetud" property="muudetud" z="NM0y4KZ4Rl+G+QUtSsa5OufShW8="/>
+            <table:column id="c_ee_itcollege_i377_team6_entities_VahtkonndPiiriloigul_avaja" property="avaja" z="Qi/MUQwtgNIo2b6QUmmaJsF7VqA="/>
+            <table:column calendar="true" dateTimePattern="${vahtkonndPiiriloigul_avatud_date_format}" id="c_ee_itcollege_i377_team6_entities_VahtkonndPiiriloigul_avatud" property="avatud" z="u4GPG+tg3ZZ5F3mZluGntn0x3h8="/>
+            <table:column id="c_ee_itcollege_i377_team6_entities_VahtkonndPiiriloigul_muutja" property="muutja" z="PH5AGwQJak+mGdTnM+WywiXsPZE="/>
+            <table:column calendar="true" dateTimePattern="${vahtkonndPiiriloigul_muudetud_date_format}" id="c_ee_itcollege_i377_team6_entities_VahtkonndPiiriloigul_muudetud" property="muudetud" z="PBjJTKEK49dFTklpdJOMPt2+y9U="/>
+            <table:column id="c_ee_itcollege_i377_team6_entities_VahtkonndPiiriloigul_sulgeja" property="sulgeja" z="KG4wkdRTe3QtBdTb4/jrubL3b+c="/>
         </table:table>
     </page:list>
 </div>

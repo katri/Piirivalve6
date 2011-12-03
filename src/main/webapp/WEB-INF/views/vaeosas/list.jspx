@@ -4,12 +4,12 @@
     <jsp:output omit-xml-declaration="yes"/>
     <page:list id="pl_ee_itcollege_i377_team6_entities_Vaeosa" items="${vaeosas}" z="jLeQCNpXhJcMcRNiY06Op5M6S7k=">
         <table:table data="${vaeosas}" id="l_ee_itcollege_i377_team6_entities_Vaeosa" path="/vaeosas" typeIdFieldName="vaeosaIdId" z="ATyImIDK3h0nWisOnbwvZVgOcyo=">
-            <table:column date="true" dateTimePattern="${vaeosa_alates_date_format}" id="c_ee_itcollege_i377_team6_entities_Vaeosa_alates" property="alates" z="GEfK6I3MF8bau1Ukqq7wEF7Tzt8="/>
-            <table:column id="c_ee_itcollege_i377_team6_entities_Vaeosa_avaja" property="avaja" z="/TPjCJOwxu1S6jh2dDhmUEcgEAM="/>
-            <table:column date="true" dateTimePattern="${vaeosa_avatud_date_format}" id="c_ee_itcollege_i377_team6_entities_Vaeosa_avatud" property="avatud" z="B8DCxo8F5DZYQyrpWRZaBkbUTcI="/>
             <table:column id="c_ee_itcollege_i377_team6_entities_Vaeosa_kommentaar" property="kommentaar" z="+NuHXkRhbsCLMWAdhsEp5dZDePk="/>
-            <table:column id="c_ee_itcollege_i377_team6_entities_Vaeosa_kood" property="kood" z="8eWN3oJ2n+q8KOIOL2MfAQiTyhc="/>
-            <table:column date="true" dateTimePattern="${vaeosa_kuni_date_format}" id="c_ee_itcollege_i377_team6_entities_Vaeosa_kuni" property="kuni" z="B9ZYwWWk6C0oURV+clb3aKXPIfw="/>
+            <table:column id="c_ee_itcollege_i377_team6_entities_Vaeosa_avaja" property="avaja" z="/TPjCJOwxu1S6jh2dDhmUEcgEAM="/>
+            <table:column calendar="true" dateTimePattern="${vaeosa_avatud_date_format}" id="c_ee_itcollege_i377_team6_entities_Vaeosa_avatud" property="avatud" z="bD26TQKlR3m7SEk8rXpMjOQTEhQ="/>
+            <table:column id="c_ee_itcollege_i377_team6_entities_Vaeosa_muutja" property="muutja" z="omz9fIzzdWHpcHQ+fmLFRZUvKSg="/>
+            <table:column calendar="true" dateTimePattern="${vaeosa_muudetud_date_format}" id="c_ee_itcollege_i377_team6_entities_Vaeosa_muudetud" property="muudetud" z="DtakX/cgyBac/2dsJ+A+OwpSVls="/>
+            <table:column id="c_ee_itcollege_i377_team6_entities_Vaeosa_sulgeja" property="sulgeja" z="NM1FRIaIe1YA78/gYaJOahrwiZM="/>
         </table:table>
     </page:list>
 </div>

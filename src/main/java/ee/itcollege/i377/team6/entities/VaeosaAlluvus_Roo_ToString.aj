@@ -11,12 +11,12 @@ privileged aspect VaeosaAlluvus_Roo_ToString {
         StringBuilder sb = new StringBuilder();
         sb.append("Alates: ").append(getAlates()).append(", ");
         sb.append("Avaja: ").append(getAvaja()).append(", ");
-        sb.append("Avatud: ").append(getAvatud()).append(", ");
+        sb.append("Avatud: ").append(getAvatud() == null ? "null" : getAvatud().getTime()).append(", ");
         sb.append("Kommentaar: ").append(getKommentaar()).append(", ");
         sb.append("Kuni: ").append(getKuni()).append(", ");
-        sb.append("Muudetud: ").append(getMuudetud()).append(", ");
+        sb.append("Muudetud: ").append(getMuudetud() == null ? "null" : getMuudetud().getTime()).append(", ");
         sb.append("Muutja: ").append(getMuutja()).append(", ");
-        sb.append("Suletud: ").append(getSuletud()).append(", ");
+        sb.append("Suletud: ").append(getSuletud() == null ? "null" : getSuletud().getTime()).append(", ");
         sb.append("Sulgeja: ").append(getSulgeja()).append(", ");
         sb.append("Vaeosa1: ").append(getVaeosa1()).append(", ");
         sb.append("Vaeosa2: ").append(getVaeosa2()).append(", ");

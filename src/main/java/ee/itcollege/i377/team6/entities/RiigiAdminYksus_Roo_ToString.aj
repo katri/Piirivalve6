@@ -9,9 +9,16 @@ privileged aspect RiigiAdminYksus_Roo_ToString {
     
     public String RiigiAdminYksus.toString() {
         StringBuilder sb = new StringBuilder();
+        sb.append("Avaja: ").append(getAvaja()).append(", ");
+        sb.append("Avatud: ").append(getAvatud() == null ? "null" : getAvatud().getTime()).append(", ");
+        sb.append("Kommentaar: ").append(getKommentaar()).append(", ");
         sb.append("Kood: ").append(getKood()).append(", ");
+        sb.append("Muudetud: ").append(getMuudetud() == null ? "null" : getMuudetud().getTime()).append(", ");
+        sb.append("Muutja: ").append(getMuutja()).append(", ");
         sb.append("Nimetus: ").append(getNimetus()).append(", ");
         sb.append("RiigiAdminYksusId: ").append(getRiigiAdminYksusId()).append(", ");
+        sb.append("Suletud: ").append(getSuletud() == null ? "null" : getSuletud().getTime()).append(", ");
+        sb.append("Sulgeja: ").append(getSulgeja()).append(", ");
         sb.append("Vaeosas: ").append(getVaeosas() == null ? "null" : getVaeosas().size()).append(", ");
         sb.append("Version: ").append(getVersion());
         return sb.toString();

@@ -1,7 +1,6 @@
 package ee.itcollege.i377.team6.entities;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,10 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.roo.addon.entity.RooEntity;
 import org.springframework.roo.addon.tostring.RooToString;
 
@@ -27,7 +23,7 @@ import org.springframework.roo.addon.tostring.RooToString;
 @RooToString
 @RooEntity
 @Table(name="PIIRIPUNKTI_ALLUVUS")
-public class PiiripunktiAlluvus implements Serializable {
+public class PiiripunktiAlluvus extends BaseEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -37,29 +33,9 @@ public class PiiripunktiAlluvus implements Serializable {
 
 	private String alates;
 
-	private String avaja;
-
-    @Temporal( TemporalType.DATE)
-    @DateTimeFormat(style = "M-")
-	private Date avatud;
-
-	private String kommentaar;
-
 	private String kuni;
 
-    @Temporal( TemporalType.DATE)
-    @DateTimeFormat(style = "M-")
-	private Date muudetud;
-
-	private String muutja;
-
-    @Temporal( TemporalType.DATE)
-    @DateTimeFormat(style = "M-")
-	private Date suletud;
-
-	private String sulgeja;
-
-	//bi-directional many-to-one association to Piiripunkt
+  	//bi-directional many-to-one association to Piiripunkt
     @ManyToOne
 	@JoinColumn(name="PIIRIPUNKT_ID")
 	private Piiripunkt piiripunkt;
@@ -88,29 +64,7 @@ public class PiiripunktiAlluvus implements Serializable {
 		this.alates = alates;
 	}
 
-	public String getAvaja() {
-		return this.avaja;
-	}
-
-	public void setAvaja(String avaja) {
-		this.avaja = avaja;
-	}
-
-	public Date getAvatud() {
-		return this.avatud;
-	}
-
-	public void setAvatud(Date avatud) {
-		this.avatud = avatud;
-	}
-
-	public String getKommentaar() {
-		return this.kommentaar;
-	}
-
-	public void setKommentaar(String kommentaar) {
-		this.kommentaar = kommentaar;
-	}
+	
 
 	public String getKuni() {
 		return this.kuni;
@@ -118,38 +72,6 @@ public class PiiripunktiAlluvus implements Serializable {
 
 	public void setKuni(String kuni) {
 		this.kuni = kuni;
-	}
-
-	public Date getMuudetud() {
-		return this.muudetud;
-	}
-
-	public void setMuudetud(Date muudetud) {
-		this.muudetud = muudetud;
-	}
-
-	public String getMuutja() {
-		return this.muutja;
-	}
-
-	public void setMuutja(String muutja) {
-		this.muutja = muutja;
-	}
-
-	public Date getSuletud() {
-		return this.suletud;
-	}
-
-	public void setSuletud(Date suletud) {
-		this.suletud = suletud;
-	}
-
-	public String getSulgeja() {
-		return this.sulgeja;
-	}
-
-	public void setSulgeja(String sulgeja) {
-		this.sulgeja = sulgeja;
 	}
 
 	public Piiripunkt getPiiripunkt() {

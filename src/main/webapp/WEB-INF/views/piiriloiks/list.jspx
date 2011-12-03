@@ -4,12 +4,12 @@
     <jsp:output omit-xml-declaration="yes"/>
     <page:list id="pl_ee_itcollege_i377_team6_entities_Piiriloik" items="${piiriloiks}" z="J+PifoiucLSt7psNpNbA/teNkuw=">
         <table:table data="${piiriloiks}" id="l_ee_itcollege_i377_team6_entities_Piiriloik" path="/piiriloiks" typeIdFieldName="piiriloikId" z="gvK/oaYAEz//KFPTLqPDzFUAMdA=">
-            <table:column id="c_ee_itcollege_i377_team6_entities_Piiriloik_avaja" property="avaja" z="cRvX/I+YcVGYSFIk1bXPnsNBbLE="/>
-            <table:column date="true" dateTimePattern="${piiriloik_avatud_date_format}" id="c_ee_itcollege_i377_team6_entities_Piiriloik_avatud" property="avatud" z="2PVwqWwGVrgc0IJhQXdNi4buc8I="/>
-            <table:column id="c_ee_itcollege_i377_team6_entities_Piiriloik_gpsKoordinaadid" property="gpsKoordinaadid" z="GKeDZWbvagtEmYPpQjgR8fe2VnM="/>
             <table:column id="c_ee_itcollege_i377_team6_entities_Piiriloik_kommentaar" property="kommentaar" z="sQoDUlSfKlqB1h9VX9pZXa+ZVOM="/>
-            <table:column id="c_ee_itcollege_i377_team6_entities_Piiriloik_kood" property="kood" z="MgODguOPUSVomnFjjicbU/CH4j8="/>
-            <table:column id="c_ee_itcollege_i377_team6_entities_Piiriloik_vahtkonndPiiriloiguls" property="vahtkonndPiiriloiguls" z="j+JrpOAgR4niB79vJ+CM6j/vP+w="/>
+            <table:column id="c_ee_itcollege_i377_team6_entities_Piiriloik_avaja" property="avaja" z="cRvX/I+YcVGYSFIk1bXPnsNBbLE="/>
+            <table:column calendar="true" dateTimePattern="${piiriloik_avatud_date_format}" id="c_ee_itcollege_i377_team6_entities_Piiriloik_avatud" property="avatud" z="qr2Z/hcoO8w4OB/O5C9uNVLYj8I="/>
+            <table:column id="c_ee_itcollege_i377_team6_entities_Piiriloik_muutja" property="muutja" z="dBAl7k18fxr0vosa1VDOl8fmyeM="/>
+            <table:column calendar="true" dateTimePattern="${piiriloik_muudetud_date_format}" id="c_ee_itcollege_i377_team6_entities_Piiriloik_muudetud" property="muudetud" z="rGD8V97XKEVWDCDkbrpNvedsF5w="/>
+            <table:column id="c_ee_itcollege_i377_team6_entities_Piiriloik_sulgeja" property="sulgeja" z="rKQ1Lmm42mW5OyUnK+R8bA8WPs4="/>
         </table:table>
     </page:list>
 </div>

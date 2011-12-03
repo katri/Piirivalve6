@@ -28,7 +28,7 @@ import org.springframework.roo.addon.tostring.RooToString;
 @RooToString
 @RooEntity
 
-public class Vahtkond implements Serializable {
+public class Vahtkond extends BaseEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -40,34 +40,14 @@ public class Vahtkond implements Serializable {
 	@DateTimeFormat(style = "M-")
 	private Date alates;
 
-	private String avaja;
-	
-	@Temporal( TemporalType.DATE)
-	@DateTimeFormat(style = "M-")
-	private Date avatud;
-
-	private String kommentaar;
-
 	private String kood;
 	
 	@Temporal( TemporalType.DATE)
 	@DateTimeFormat(style = "M-")
 	private Date kuni;
 	 
-	@Temporal( TemporalType.DATE)
-	@DateTimeFormat(style = "M-")
-	private Date muudetud;
-
-	private String muutja;
-
 	private String nimetus;
 	
-	@Temporal( TemporalType.DATE)
-	@DateTimeFormat(style = "M-")
-	private Date suletud;
-
-	private String sulgeja;
-
 	//bi-directional many-to-one association to Piiripunkt
     @ManyToOne
 	@JoinColumn(name="PIIRIPUNKT_ID")
@@ -101,30 +81,7 @@ public class Vahtkond implements Serializable {
 		this.alates = alates;
 	}
 
-	public String getAvaja() {
-		return this.avaja;
-	}
-
-	public void setAvaja(String avaja) {
-		this.avaja = avaja;
-	}
-
-	public Date getAvatud() {
-		return this.avatud;
-	}
-
-	public void setAvatud(Date avatud) {
-		this.avatud = avatud;
-	}
-
-	public String getKommentaar() {
-		return this.kommentaar;
-	}
-
-	public void setKommentaar(String kommentaar) {
-		this.kommentaar = kommentaar;
-	}
-
+	
 	public String getKood() {
 		return this.kood;
 	}
@@ -141,22 +98,7 @@ public class Vahtkond implements Serializable {
 		this.kuni = kuni;
 	}
 
-	public Date getMuudetud() {
-		return this.muudetud;
-	}
-
-	public void setMuudetud(Date muudetud) {
-		this.muudetud = muudetud;
-	}
-
-	public String getMuutja() {
-		return this.muutja;
-	}
-
-	public void setMuutja(String muutja) {
-		this.muutja = muutja;
-	}
-
+	
 	public String getNimetus() {
 		return this.nimetus;
 	}
@@ -165,22 +107,7 @@ public class Vahtkond implements Serializable {
 		this.nimetus = nimetus;
 	}
 
-	public Date getSuletud() {
-		return this.suletud;
-	}
-
-	public void setSuletud(Date suletud) {
-		this.suletud = suletud;
-	}
-
-	public String getSulgeja() {
-		return this.sulgeja;
-	}
-
-	public void setSulgeja(String sulgeja) {
-		this.sulgeja = sulgeja;
-	}
-
+	
 	public Piiripunkt getPiiripunkt() {
 		return this.piiripunkt;
 	}

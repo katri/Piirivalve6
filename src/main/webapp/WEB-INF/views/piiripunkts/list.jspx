@@ -4,12 +4,12 @@
     <jsp:output omit-xml-declaration="yes"/>
     <page:list id="pl_ee_itcollege_i377_team6_entities_Piiripunkt" items="${piiripunkts}" z="zlTWIb2Ln8XhEBtsLh5pjpoBYzw=">
         <table:table data="${piiripunkts}" id="l_ee_itcollege_i377_team6_entities_Piiripunkt" path="/piiripunkts" typeIdFieldName="piiripunktId" z="tNngdY254hB8IQBKOfOD3WwOmxg=">
-            <table:column date="true" dateTimePattern="${piiripunkt_alates_date_format}" id="c_ee_itcollege_i377_team6_entities_Piiripunkt_alates" property="alates" z="nbScXnaD+QlnAS3uqkcDwqC4a54="/>
-            <table:column id="c_ee_itcollege_i377_team6_entities_Piiripunkt_avaja" property="avaja" z="lyh224WNKT+NhmdwASLqmbAlRQQ="/>
-            <table:column date="true" dateTimePattern="${piiripunkt_avatud_date_format}" id="c_ee_itcollege_i377_team6_entities_Piiripunkt_avatud" property="avatud" z="5mgJOTil4l0CnjLAieRP0HwWgDA="/>
-            <table:column id="c_ee_itcollege_i377_team6_entities_Piiripunkt_gpsLatitude" property="gpsLatitude" z="Qr09b+G9Dpl/r0gC2Xj4Klr4x30="/>
-            <table:column id="c_ee_itcollege_i377_team6_entities_Piiripunkt_gpsLongituide" property="gpsLongituide" z="YKDkVeckbboKsAYTUHkHu9iyTXM="/>
             <table:column id="c_ee_itcollege_i377_team6_entities_Piiripunkt_kommentaar" property="kommentaar" z="QNk9tTA3OOZYYmtHYG882BcFvQA="/>
+            <table:column id="c_ee_itcollege_i377_team6_entities_Piiripunkt_avaja" property="avaja" z="lyh224WNKT+NhmdwASLqmbAlRQQ="/>
+            <table:column calendar="true" dateTimePattern="${piiripunkt_avatud_date_format}" id="c_ee_itcollege_i377_team6_entities_Piiripunkt_avatud" property="avatud" z="oCgcUBZ7DSP9LOekG32xNM77TVs="/>
+            <table:column id="c_ee_itcollege_i377_team6_entities_Piiripunkt_muutja" property="muutja" z="RKFZTRQh6tU3RGxmYKbY7kKR0u8="/>
+            <table:column calendar="true" dateTimePattern="${piiripunkt_muudetud_date_format}" id="c_ee_itcollege_i377_team6_entities_Piiripunkt_muudetud" property="muudetud" z="E05dOsZPGOiZ6727YixnmZvMUr4="/>
+            <table:column id="c_ee_itcollege_i377_team6_entities_Piiripunkt_sulgeja" property="sulgeja" z="gBSTQxUM8qVprEBcm1t7dfFq1q8="/>
         </table:table>
     </page:list>
 </div>

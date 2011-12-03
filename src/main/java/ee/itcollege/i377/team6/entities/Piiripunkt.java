@@ -26,7 +26,7 @@ import org.springframework.roo.addon.tostring.RooToString;
 @Entity
 @RooToString
 @RooEntity
-public class Piiripunkt implements Serializable {
+public class Piiripunkt extends BaseEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -38,19 +38,11 @@ public class Piiripunkt implements Serializable {
     @DateTimeFormat(style = "M-")
 	private Date alates;
 
-	private String avaja;
-
-    @Temporal( TemporalType.DATE)
-    @DateTimeFormat(style = "M-")
-	private Date avatud;
-
 	@Column(name="GPS_LATITUDE")
 	private BigDecimal gpsLatitude;
 
 	@Column(name="GPS_LONGITUIDE")
 	private BigDecimal gpsLongituide;
-
-	private String kommentaar;
 
 	private String kood;
 
@@ -61,21 +53,9 @@ public class Piiripunkt implements Serializable {
     @DateTimeFormat(style = "M-")
 	private Date kuni;
 
-    @Temporal( TemporalType.DATE)
-    @DateTimeFormat(style = "M-")
-	private Date muudetud;
-
-	private String muutja;
-
 	private String nimetus;
 
-    @Temporal( TemporalType.DATE)
-    @DateTimeFormat(style = "M-")
-	private Date suletud;
-
-	private String sulgeja;
-
-	//bi-directional many-to-one association to PiiriloiguHaldaja
+  	//bi-directional many-to-one association to PiiriloiguHaldaja
 	@OneToMany(mappedBy="piiripunkt")
 	private Set<PiiriloiguHaldaja> piiriloiguHaldajas;
 
@@ -106,22 +86,6 @@ public class Piiripunkt implements Serializable {
 		this.alates = alates;
 	}
 
-	public String getAvaja() {
-		return this.avaja;
-	}
-
-	public void setAvaja(String avaja) {
-		this.avaja = avaja;
-	}
-
-	public Date getAvatud() {
-		return this.avatud;
-	}
-
-	public void setAvatud(Date avatud) {
-		this.avatud = avatud;
-	}
-
 	public BigDecimal getGpsLatitude() {
 		return this.gpsLatitude;
 	}
@@ -136,14 +100,6 @@ public class Piiripunkt implements Serializable {
 
 	public void setGpsLongituide(BigDecimal gpsLongituide) {
 		this.gpsLongituide = gpsLongituide;
-	}
-
-	public String getKommentaar() {
-		return this.kommentaar;
-	}
-
-	public void setKommentaar(String kommentaar) {
-		this.kommentaar = kommentaar;
 	}
 
 	public String getKood() {
@@ -170,44 +126,13 @@ public class Piiripunkt implements Serializable {
 		this.kuni = kuni;
 	}
 
-	public Date getMuudetud() {
-		return this.muudetud;
-	}
-
-	public void setMuudetud(Date muudetud) {
-		this.muudetud = muudetud;
-	}
-
-	public String getMuutja() {
-		return this.muutja;
-	}
-
-	public void setMuutja(String muutja) {
-		this.muutja = muutja;
-	}
-
+	
 	public String getNimetus() {
 		return this.nimetus;
 	}
 
 	public void setNimetus(String nimetus) {
 		this.nimetus = nimetus;
-	}
-
-	public Date getSuletud() {
-		return this.suletud;
-	}
-
-	public void setSuletud(Date suletud) {
-		this.suletud = suletud;
-	}
-
-	public String getSulgeja() {
-		return this.sulgeja;
-	}
-
-	public void setSulgeja(String sulgeja) {
-		this.sulgeja = sulgeja;
 	}
 
 	public Set<PiiriloiguHaldaja> getPiiriloiguHaldajas() {

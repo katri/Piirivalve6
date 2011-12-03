@@ -5,5 +5,12 @@
     <page:show id="ps_ee_itcollege_i377_team6_entities_RiigiAdminYksus" object="${riigiadminyksus}" path="/riigiadminyksuses" z="a53TwYD++szO9v4ndzV2ICOcmzs=">
         <field:display field="kood" id="s_ee_itcollege_i377_team6_entities_RiigiAdminYksus_kood" object="${riigiadminyksus}" z="gNu9uXWRU2RcSfj7VXopHkGSKII="/>
         <field:display field="nimetus" id="s_ee_itcollege_i377_team6_entities_RiigiAdminYksus_nimetus" object="${riigiadminyksus}" z="yB7qCenOVbOC2C8L3oGAlGafSAQ="/>
+        <field:display field="kommentaar" id="s_ee_itcollege_i377_team6_entities_RiigiAdminYksus_kommentaar" object="${riigiadminyksus}" z="Itd7tOPsumDGcuXGb45d+IOjWwI="/>
+        <field:display field="avaja" id="s_ee_itcollege_i377_team6_entities_RiigiAdminYksus_avaja" object="${riigiadminyksus}" z="cbQLF3/5Px6B5kBaZPp6kp16u5k="/>
+        <field:display calendar="true" dateTimePattern="${riigiAdminYksus_avatud_date_format}" field="avatud" id="s_ee_itcollege_i377_team6_entities_RiigiAdminYksus_avatud" object="${riigiadminyksus}" z="H+TFY2CrTTe+sIfXgH3MDpbT5UI="/>
+        <field:display field="muutja" id="s_ee_itcollege_i377_team6_entities_RiigiAdminYksus_muutja" object="${riigiadminyksus}" z="8UseusZ10k6kYYo7tUagmdfVasc="/>
+        <field:display calendar="true" dateTimePattern="${riigiAdminYksus_muudetud_date_format}" field="muudetud" id="s_ee_itcollege_i377_team6_entities_RiigiAdminYksus_muudetud" object="${riigiadminyksus}" z="9d22BaVXb2lN3YCETRB5uG+pyFI="/>
+        <field:display field="sulgeja" id="s_ee_itcollege_i377_team6_entities_RiigiAdminYksus_sulgeja" object="${riigiadminyksus}" z="m3xUDsN1/I/lAJcsuXJpOnSkaRQ="/>
+        <field:display calendar="true" dateTimePattern="${riigiAdminYksus_suletud_date_format}" field="suletud" id="s_ee_itcollege_i377_team6_entities_RiigiAdminYksus_suletud" object="${riigiadminyksus}" z="K6bkJk+te46lE40IMgty/ONKM5o="/>
     </page:show>
 </div>

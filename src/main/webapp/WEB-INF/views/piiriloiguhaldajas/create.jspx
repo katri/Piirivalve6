@@ -3,11 +3,9 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <form:create id="fc_ee_itcollege_i377_team6_entities_PiiriloiguHaldaja" modelAttribute="piiriloiguHaldaja" path="/piiriloiguhaldajas" render="${empty dependencies}" z="IkMBX/NzViNf621TWqvTvXPNmjU=">
-        <field:datetime dateTimePattern="${piiriloiguHaldaja_alates_date_format}" field="alates" id="c_ee_itcollege_i377_team6_entities_PiiriloiguHaldaja_alates" z="t6h4+ZR8ju7g6182Ixa4Xdoe05c="/>
         <field:input field="avaja" id="c_ee_itcollege_i377_team6_entities_PiiriloiguHaldaja_avaja" z="aFAbGYu0PEJ1/auvGvf/sPE+5r8="/>
         <field:datetime dateTimePattern="${piiriloiguHaldaja_avatud_date_format}" field="avatud" id="c_ee_itcollege_i377_team6_entities_PiiriloiguHaldaja_avatud" z="U0iW03amDZa5HWB8myRGGTui2lw="/>
         <field:input field="kommentaar" id="c_ee_itcollege_i377_team6_entities_PiiriloiguHaldaja_kommentaar" z="N4UHfUwIAjZ/RJCTXdXDE0l3Q84="/>
-        <field:datetime dateTimePattern="${piiriloiguHaldaja_kuni_date_format}" field="kuni" id="c_ee_itcollege_i377_team6_entities_PiiriloiguHaldaja_kuni" z="OVnk+uwQCHZNEZeu2w4SBe7If5M="/>
         <field:datetime dateTimePattern="${piiriloiguHaldaja_muudetud_date_format}" field="muudetud" id="c_ee_itcollege_i377_team6_entities_PiiriloiguHaldaja_muudetud" z="VRc5kkX0aL2mqybn+EgMcd3+Sus="/>
         <field:input field="muutja" id="c_ee_itcollege_i377_team6_entities_PiiriloiguHaldaja_muutja" z="iXuA0v72a3qOj6UdpuV5MvergOQ="/>
         <field:datetime dateTimePattern="${piiriloiguHaldaja_suletud_date_format}" field="suletud" id="c_ee_itcollege_i377_team6_entities_PiiriloiguHaldaja_suletud" z="gquUBS70fV3sJZlKJ/DzxRqfe9o="/>

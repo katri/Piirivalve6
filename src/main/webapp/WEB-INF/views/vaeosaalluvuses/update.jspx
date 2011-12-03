@@ -3,15 +3,15 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <form:update id="fu_ee_itcollege_i377_team6_entities_VaeosaAlluvus" idField="vaeosaAlluvusId" modelAttribute="vaeosaAlluvus" path="/vaeosaalluvuses" versionField="Version" z="+gDa7k8n6m1U8UanGbkjebw8G3Y=">
-        <field:datetime dateTimePattern="${vaeosaAlluvus_alates_date_format}" field="alates" id="c_ee_itcollege_i377_team6_entities_VaeosaAlluvus_alates" z="kx/aioeeV6rkfabQ+MziDDW0x2k="/>
+        <field:input field="kommentaar" id="c_ee_itcollege_i377_team6_entities_VaeosaAlluvus_kommentaar" z="sKquz86TiKMHqZpJYIwT6l9LI6U="/>
         <field:input field="avaja" id="c_ee_itcollege_i377_team6_entities_VaeosaAlluvus_avaja" z="15iidiiEP02L3Nr/mhdEYZl07BQ="/>
         <field:datetime dateTimePattern="${vaeosaAlluvus_avatud_date_format}" field="avatud" id="c_ee_itcollege_i377_team6_entities_VaeosaAlluvus_avatud" z="8eRdZoXi4/TIYDZENhMF7vME6qo="/>
-        <field:input field="kommentaar" id="c_ee_itcollege_i377_team6_entities_VaeosaAlluvus_kommentaar" z="sKquz86TiKMHqZpJYIwT6l9LI6U="/>
-        <field:datetime dateTimePattern="${vaeosaAlluvus_kuni_date_format}" field="kuni" id="c_ee_itcollege_i377_team6_entities_VaeosaAlluvus_kuni" z="kxPI7blRM6uWHDa4viQ2T/zV3aQ="/>
-        <field:datetime dateTimePattern="${vaeosaAlluvus_muudetud_date_format}" field="muudetud" id="c_ee_itcollege_i377_team6_entities_VaeosaAlluvus_muudetud" z="P5dGbnd04d6OReEVLUtAo0JKkV0="/>
         <field:input field="muutja" id="c_ee_itcollege_i377_team6_entities_VaeosaAlluvus_muutja" z="sjNeNdctnuGelTzagP0KqXcF/kk="/>
-        <field:datetime dateTimePattern="${vaeosaAlluvus_suletud_date_format}" field="suletud" id="c_ee_itcollege_i377_team6_entities_VaeosaAlluvus_suletud" z="lhgb3quttYFMv0IPgJPxT/Adros="/>
+        <field:datetime dateTimePattern="${vaeosaAlluvus_muudetud_date_format}" field="muudetud" id="c_ee_itcollege_i377_team6_entities_VaeosaAlluvus_muudetud" z="P5dGbnd04d6OReEVLUtAo0JKkV0="/>
         <field:input field="sulgeja" id="c_ee_itcollege_i377_team6_entities_VaeosaAlluvus_sulgeja" z="DxSfNFVCY+skk+D3mwI/IOOFfTk="/>
+        <field:datetime dateTimePattern="${vaeosaAlluvus_suletud_date_format}" field="suletud" id="c_ee_itcollege_i377_team6_entities_VaeosaAlluvus_suletud" z="lhgb3quttYFMv0IPgJPxT/Adros="/>
+        <field:datetime dateTimePattern="${vaeosaAlluvus_alates_date_format}" field="alates" id="c_ee_itcollege_i377_team6_entities_VaeosaAlluvus_alates" z="kx/aioeeV6rkfabQ+MziDDW0x2k="/>
+        <field:datetime dateTimePattern="${vaeosaAlluvus_kuni_date_format}" field="kuni" id="c_ee_itcollege_i377_team6_entities_VaeosaAlluvus_kuni" z="kxPI7blRM6uWHDa4viQ2T/zV3aQ="/>
         <field:select field="vaeosa1" id="c_ee_itcollege_i377_team6_entities_VaeosaAlluvus_vaeosa1" itemValue="vaeosaIdId" items="${vaeosas}" path="/vaeosas" z="lbjS4nkqQzDeGZNP+aWcu8aPhFI="/>
         <field:select field="vaeosa2" id="c_ee_itcollege_i377_team6_entities_VaeosaAlluvus_vaeosa2" itemValue="vaeosaIdId" items="${vaeosas}" path="/vaeosas" z="7N+EMZ1rnEgTsTfBrqkOKOaJDjU="/>
     </form:update>
