@@ -31,3 +31,15 @@ security setup
 // Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-12-01 01:58:11
 // Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-12-01 20:15:56
 web mvc language --code de
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-12-02 01:36:26
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-12-03 16:02:45
+logging setup --level INFO 
+database properties list 
+logging setup --level ERROR 
+database properties list 
+hint
+hint
+help
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-12-03 21:47:46
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-12-03 21:59:59
+logging setup --level INFO 

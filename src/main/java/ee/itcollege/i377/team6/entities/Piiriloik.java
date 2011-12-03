@@ -89,6 +89,9 @@ public class Piiriloik implements Serializable {
 	// selle konkreetse piirilõigu ID-d omavad
 	public void setPiiriloiguHaldajas(Vaeosa newVaeosa) throws ParseException {
 		this.piiriloiguHaldajas = manageRelations(this.piiriloiguHaldajas, newVaeosa);
+	
+		
+		
 	}
 	
 /*Haldab piirilõiguhaldaja tabeli muudatusi ja logimist selles
@@ -126,7 +129,7 @@ public class Piiriloik implements Serializable {
 	    String userName = auth.getName();
 		
 		//Teeme tagastatava uue piirilõiguHaldaja objekti
-		PiiriloiguHaldaja workObject=null;
+		PiiriloiguHaldaja workObject= new PiiriloiguHaldaja();
 		
 		// Kui vana set on tühi, siis teeme lihtsalt uue kirje
 		if(oldSet==null){
@@ -158,7 +161,7 @@ public class Piiriloik implements Serializable {
 		// Kui uus väeosa ID on sama, mis uus ja kuni kpv on täna või hilisem siis ei tehta midagi - st tagastatkse sama set.
 		}
 		
-		return (Set<PiiriloiguHaldaja>) PiiriloiguHaldaja.findAllPiiriloiguHaldajas();
+		return ((Set<PiiriloiguHaldaja>) PiiriloiguHaldaja.findAllPiiriloiguHaldajas());
 	}
 	
 	
