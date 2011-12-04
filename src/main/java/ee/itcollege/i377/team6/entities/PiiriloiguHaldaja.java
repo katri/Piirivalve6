@@ -1,6 +1,8 @@
 package ee.itcollege.i377.team6.entities;
 
 import java.io.Serializable;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -11,7 +13,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.roo.addon.entity.RooEntity;
 import org.springframework.roo.addon.tostring.RooToString;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,7 +40,15 @@ public class PiiriloiguHaldaja extends BaseEntity implements Serializable {
 	@Column(name="PIIRILOIGU_HALDAJA_ID")
 	private Long piiriloiguHaldajaId;
 
-  
+	@NotNull
+    @Temporal( TemporalType.DATE)
+    @DateTimeFormat(style = "M-")
+	private Calendar alates;
+	
+	@NotNull
+	@Temporal( TemporalType.DATE)
+    @DateTimeFormat(style = "M-")
+	private Calendar kuni;
 	
 	//bi-directional many-to-one association to Piiriloik
     @ManyToOne
@@ -107,6 +121,26 @@ public class PiiriloiguHaldaja extends BaseEntity implements Serializable {
 
 	public void setVaeosa(Vaeosa vaeosa) {
 		this.vaeosa = vaeosa;
+	}
+
+
+	public Calendar getAlates() {
+		return alates;
+	}
+
+
+	public void setAlates(Calendar now) {
+		this.alates = now;
+	}
+
+
+	public Calendar getKuni() {
+		return kuni;
+	}
+
+
+	public void setKuni(Calendar kuni) {
+		this.kuni = kuni;
 	}
 	
 }

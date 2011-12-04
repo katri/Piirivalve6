@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -54,7 +55,7 @@ public class Piiriloik extends BaseEntity implements Serializable {
 
 	//bi-directional many-to-one association to PiiriloiguHaldaja
 	@OneToMany(mappedBy="piiriloik")
-	private Set<PiiriloiguHaldaja> piiriloiguHaldajas;
+	private List<PiiriloiguHaldaja> piiriloiguHaldajas;
 
 	
 	//bi-directional many-to-one association to VahtkonndPiiriloigul
@@ -88,7 +89,7 @@ public class Piiriloik extends BaseEntity implements Serializable {
     //haldajaMuutmine
 	
 
-	public Set<PiiriloiguHaldaja> getPiiriloiguHaldajas() {
+	public List<PiiriloiguHaldaja> getPiiriloiguHaldajas() {
 		return this.piiriloiguHaldajas;
 	}
 
@@ -96,14 +97,14 @@ public class Piiriloik extends BaseEntity implements Serializable {
 	// Määrab piirilõiguhaldajate setiks parasjagu need read, mis piirilõiguhaldajate olemis
 	// selle konkreetse piirilõigu ID-d omavad
 	
-	public void setPiiriloiguHaldajas(Vaeosa newVaeosa) throws ParseException {
-		this.piiriloiguHaldajas = manageRelations(this.piiriloiguHaldajas, newVaeosa);
+	public void setPiiriloiguHaldajas(Long id) throws ParseException {
+		this.piiriloiguHaldajas = manageRelations(this.piiriloiguHaldajas, id);
 	
 	}
 	
 /*Haldab piirilõiguhaldaja tabeli muudatusi ja logimist selles
 	Esiteks: Kui vana piirilõiguhaldaja set on tühi, siis teeme lihtsalt uue kirje.	
-	Teiseks: Leiame kõige uuema kuupäevaga "kuni" kirje vanas piiriloiguhaldaja setis. 
+	Kui ei olnud tühi, siis leiame kõige uuema kuupäevaga "kuni" kirje vanas piiriloiguhaldaja setis. 
 	Teiseks:
 		Kui uus väeosa ID on sama, mis uus ja kuni kpv on täna või hilisem siis ei tehta midagi - st tagastatkse sama set.
 		
@@ -121,28 +122,56 @@ public class Piiriloik extends BaseEntity implements Serializable {
 		Kui vana väeosa ID on olemas aga uus on tühi, siis uut rida ei tehta. Vana reaga:
 			täidame väljad muutja, muudetud=tänane kpv ja kuni=tänane kpv.
 */
-	private Set<PiiriloiguHaldaja> manageRelations(Set<PiiriloiguHaldaja> oldSet, Vaeosa newVaeosa) throws ParseException {
+	private List<PiiriloiguHaldaja> manageRelations(List<PiiriloiguHaldaja> oldSet, Long id) throws ParseException {
 		
 				
-		//Teeme tagastatava uue piirilõiguHaldaja objekti
-		PiiriloiguHaldaja workObject= new PiiriloiguHaldaja();
+		
+		// Tänast kuupĆ¤eva lĆ¤heb ikka vaja
+		Calendar now = Calendar.getInstance();
+		
+		//kauge tulevik
 		
 	
 		
-		//Leiame kõige uuema kuupäevaga "kuni" kirje vanas piiriloiguhaldaja setis. 
-		Date uusimKpv;
+		//Teeme uue piirilĆµiguHaldaja objekti
+		PiiriloiguHaldaja workObject= new PiiriloiguHaldaja();
+		
+		// Kui vana set on tühi, siis teeme lihtsalt uue kirje
+		if(oldSet==null){
+			workObject.setAlates(now);
+			workObject.setKuni(temporaryClosedDate());
+			
+			// ei ole vist vaja-tuleb ise? workObject.setPiiriloiguHaldajaId();
+			workObject.setPiiriloik(this);
+			workObject.setPiiripunkt(null);
+			workObject.setVaeosa(Vaeosa.findVaeosa(id));
+			workObject.persist();
+			}
+		else{
+		
+		//Leiame kĆµige uuema kuupĆ¤evaga "kuni" kirje vanas piiriloiguhaldaja setis. 
+		Calendar uusimKpv;
 		uusimKpv=null;
 		
-/*		for(PiiriloiguHaldaja o: oldSet) {
+	for(PiiriloiguHaldaja o: oldSet) {
 			if (uusimKpv.before(o.getKuni()))
 				uusimKpv=o.getKuni();
 				workObject=o;
-		}*/
-		// Kui uus väeosa ID on sama, mis uus ja kuni kpv on täna või hilisem siis ei tehta midagi - st tagastatkse sama set.
-		
-		
-		return null;
+		}
+		// Kui uus vĆ¤eosa ID on sama, mis uus ja kuni kpv on tĆ¤na vĆµi hilisem siis ei tehta midagi - st tagastatkse sama set.
+	if(workObject.getVaeosa().getVaeosaIdId()==id){
+		return oldSet;
 	}
+	else{
+		
+		workObject.setVaeosa(Vaeosa.findVaeosa(id));
+		workObject.merge();
+	}
+		}
+		
+		return (PiiriloiguHaldaja.findAllPiiriloiguHaldajas());
+	}
+	
 	
 	
 	

@@ -121,6 +121,8 @@ privileged aspect PiiriloiguHaldajaController_Roo_Controller {
         uiModel.addAttribute("piiriloiguHaldaja_avatud_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
         uiModel.addAttribute("piiriloiguHaldaja_muudetud_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
         uiModel.addAttribute("piiriloiguHaldaja_suletud_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
+        uiModel.addAttribute("piiriloiguHaldaja_alates_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
+        uiModel.addAttribute("piiriloiguHaldaja_kuni_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
     }
     
     String PiiriloiguHaldajaController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {
