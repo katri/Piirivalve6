@@ -88,7 +88,7 @@ public class BaseEntity {
 		this.sulgeja = user;
 	}
 	
-	private Calendar temporaryClosedDate() {
+	protected Calendar temporaryClosedDate() {
 		Calendar tempDate = Calendar.getInstance();
 		tempDate.clear();
 		tempDate.set(Calendar.YEAR, 9999);
