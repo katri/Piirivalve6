@@ -19,7 +19,8 @@ privileged aspect PiiriloiguHaldaja_Roo_ToString {
         sb.append("Piiripunkt: ").append(getPiiripunkt()).append(", ");
         sb.append("Suletud: ").append(getSuletud() == null ? "null" : getSuletud().getTime()).append(", ");
         sb.append("Sulgeja: ").append(getSulgeja()).append(", ");
-        sb.append("Vaeosa: ").append(getVaeosa());
+        sb.append("Vaeosa: ").append(getVaeosa()).append(", ");
+        sb.append("Version: ").append(getVersion());
         return sb.toString();
     }
     

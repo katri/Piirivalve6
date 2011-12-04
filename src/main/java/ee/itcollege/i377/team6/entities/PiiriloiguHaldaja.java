@@ -40,15 +40,15 @@ public class PiiriloiguHaldaja extends BaseEntity implements Serializable {
 	@Column(name="PIIRILOIGU_HALDAJA_ID")
 	private Long piiriloiguHaldajaId;
 
-	@NotNull
-    @Temporal( TemporalType.DATE)
-    @DateTimeFormat(style = "M-")
-	private Calendar alates;
-	
-	@NotNull
-	@Temporal( TemporalType.DATE)
-    @DateTimeFormat(style = "M-")
-	private Calendar kuni;
+	 @NotNull
+	    @Temporal( TemporalType.DATE)
+	    @DateTimeFormat(style = "M-")
+		private Calendar alates;
+
+	    @NotNull
+		@Temporal( TemporalType.DATE)
+	    @DateTimeFormat(style = "M-")
+		private Calendar kuni;
 	
 	//bi-directional many-to-one association to Piiriloik
     @ManyToOne
@@ -129,8 +129,8 @@ public class PiiriloiguHaldaja extends BaseEntity implements Serializable {
 	}
 
 
-	public void setAlates(Calendar now) {
-		this.alates = now;
+	public void setAlates(Calendar alates) {
+		this.alates = alates;
 	}
 
 

@@ -6,7 +6,7 @@
     <form:update id="fu_ee_itcollege_i377_team6_entities_Piiriloik" idField="piiriloikId" modelAttribute="piiriloik" path="/piiriloiks" versionField="Version" z="REaJEtMH7/4b2XzllrAo1dgYyR0=">
         <table style="border-style:none">
 	        <tr>
-	           <td width="50%" style="border-style:none;vertical-align:top">
+	            <td width="50%" style="border-style:none;vertical-align:top">
 	            
 	    <field:input field="kood" id="c_ee_itcollege_i377_team6_entities_Piiriloik_kood" z="SCOdydMQjF/HXf5fkI1tVCjeGto="/>
         <field:input field="nimetus" id="c_ee_itcollege_i377_team6_entities_Piiriloik_nimetus" z="5TT51cxGblra7ovbyf8YlkGxaVM="/>
@@ -21,10 +21,16 @@
  		teeb vajalikud operatsioonid Piiriloiguhaldaja olemiga. 
  		-->
  		<springform:select itemLabel="nimetus" itemValue="vaeosaIdId" path="piiriloiguHaldajas" items="${vaeosad}" multiple="false" required="true"/>
-   		</td>
+   
+	               
+	            </td>
 	            
 	            <td width="50%" style="border-style:none;vertical-align:top">
-	    <table>
+	                      
+        
+      
+        
+ 		<table>
  		<tr><td><b>Vahtkonnad</b></td></tr>
  		<c:forEach items="${vahtkonnad}" var="v">
  		<tr>
