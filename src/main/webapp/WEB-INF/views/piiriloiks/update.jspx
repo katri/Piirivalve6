@@ -17,7 +17,7 @@
  		Web packetisse tuleb uus klass teha, mis piiril�igule haldaja valimisel controlleri vahendusel?
  		teeb vajalikud operatsioonid Piiriloiguhaldaja olemiga. 
  		-->
- 		<springform:select itemLabel="nimetus" itemValue="vaeosaIdId" path="piiriloiguHaldajas" items="${vaeosad}" multiple="false" required="false"/>
+ 		<springform:select itemLabel="nimetus" itemValue="vaeosaIdId" path="piiriloiguHaldajas" items="${vaeosad}" multiple="false" required="true"/>
         </p>
         
        <!-- See tuleb paremale tõsta-->
