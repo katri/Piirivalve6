@@ -2,6 +2,7 @@ package ee.itcollege.i377.team6.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,10 +14,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.roo.addon.entity.RooEntity;
 import org.springframework.roo.addon.tostring.RooToString;
+import org.springframework.transaction.annotation.Transactional;
 
 
 /**
@@ -29,30 +32,55 @@ import org.springframework.roo.addon.tostring.RooToString;
 @Table(name="VAEOSA_ALLUVUS")
 public class VaeosaAlluvus extends BaseEntity implements  Serializable {
 	private static final long serialVersionUID = 1L;
-
+	
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="VAEOSA_ALLUVUS_ID")
 	private Long vaeosaAlluvusId;
-
-    @Temporal( TemporalType.DATE)
-    @DateTimeFormat(style = "M-")
-	private Date alates;
-
-	@Temporal( TemporalType.DATE)
-    @DateTimeFormat(style = "M-")
-	private Date kuni;
-
-   	//bi-directional many-to-one association to Vaeosa
-    @ManyToOne
-	@JoinColumn(name="ALLUVA_VAEOSA_ID")
-	private Vaeosa vaeosa1;
-
+	
 	//bi-directional many-to-one association to Vaeosa
     @ManyToOne
 	@JoinColumn(name="YLEMUS_VAEOSA_ID")
 	private Vaeosa vaeosa2;
+    
+   	//bi-directional many-to-one association to Vaeosa
+    @ManyToOne
+	@JoinColumn(name="ALLUVA_VAEOSA_ID")
+	private Vaeosa vaeosa1;
+	
+	@NotNull
+    @Temporal( TemporalType.DATE)
+    @DateTimeFormat(style = "M-")
+	private Date alates;
+	
+	@NotNull
+	@Temporal( TemporalType.DATE)
+    @DateTimeFormat(style = "M-")
+	private Date kuni;
 
+    @Transactional
+    public void remove() {
+        if (this.entityManager == null) this.entityManager = entityManager();
+        if (this.entityManager.contains(this)) {
+        	this.setDeleted();
+            this.entityManager.merge(this);
+        } else {
+            VaeosaAlluvus attached = VaeosaAlluvus.findVaeosaAlluvus(this.vaeosaAlluvusId);
+            this.setDeleted();
+            this.entityManager.merge(attached);
+        }
+    }
+	
+    public static List<VaeosaAlluvus> findAllVaeosaAlluvuses() {
+        return entityManager().createQuery("SELECT o FROM VaeosaAlluvus o WHERE suletud ='9999-12-31'", VaeosaAlluvus.class).getResultList();
+    }
+    
+  
+    public static List<VaeosaAlluvus> findVaeosaAlluvusEntries(int firstResult, int maxResults) {
+        return entityManager().createQuery("SELECT o FROM VaeosaAlluvus o WHERE suletud ='9999-12-31'", VaeosaAlluvus.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
+    }
+    
     public VaeosaAlluvus() {
     }
 

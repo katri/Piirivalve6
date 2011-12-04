@@ -3,6 +3,7 @@ package ee.itcollege.i377.team6.entities;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -13,10 +14,14 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.roo.addon.entity.RooEntity;
 import org.springframework.roo.addon.tostring.RooToString;
+import org.springframework.transaction.annotation.Transactional;
 
 
 /**
@@ -34,26 +39,37 @@ public class Piiripunkt extends BaseEntity implements Serializable {
 	@Column(name="PIIRIPUNKT_ID")
 	private Long piiripunktId;
 
-    @Temporal( TemporalType.DATE)
-    @DateTimeFormat(style = "M-")
-	private Date alates;
-
-	@Column(name="GPS_LATITUDE")
+	@NotNull
+	@Size(max = 20)
+	private String kood;
+	
+	@NotNull
+	@Size(max = 100)
+	private String nimetus;
+	
+	@Digits(integer=9, fraction=5)
+    @Column(name="GPS_LATITUDE")
 	private BigDecimal gpsLatitude;
 
+	@Digits(integer=9, fraction=5)
 	@Column(name="GPS_LONGITUIDE")
 	private BigDecimal gpsLongituide;
 
-	private String kood;
-
+	@Digits(integer=6, fraction=2)
 	@Column(name="KORGUS_MEREPINNAST")
 	private BigDecimal korgusMerepinnast;
 
+	@NotNull
+	@Temporal( TemporalType.DATE)
+    @DateTimeFormat(style = "M-")
+	private Date alates;
+	
+	@NotNull
     @Temporal( TemporalType.DATE)
     @DateTimeFormat(style = "M-")
 	private Date kuni;
 
-	private String nimetus;
+	
 
   	//bi-directional many-to-one association to PiiriloiguHaldaja
 	@OneToMany(mappedBy="piiripunkt")
@@ -67,6 +83,27 @@ public class Piiripunkt extends BaseEntity implements Serializable {
 	@OneToMany(mappedBy="piiripunkt")
 	private Set<Vahtkond> vahtkonds;
 
+    @Transactional
+    public void remove() {
+        if (this.entityManager == null) this.entityManager = entityManager();
+        if (this.entityManager.contains(this)) {
+        	this.setDeleted();
+            this.entityManager.merge(this);
+        } else {
+            Piiripunkt attached = Piiripunkt.findPiiripunkt(this.piiripunktId);
+            this.setDeleted();
+            this.entityManager.merge(attached);
+        }
+    }
+    
+    public static List<Piiripunkt> findAllPiiripunkts() {
+        return entityManager().createQuery("SELECT o FROM Piiripunkt o WHERE suletud ='9999-12-31'", Piiripunkt.class).getResultList();
+    }
+    
+    public static List<Piiripunkt> findPiiripunktEntries(int firstResult, int maxResults) {
+        return entityManager().createQuery("SELECT o FROM Piiripunkt o WHERE suletud ='9999-12-31'", Piiripunkt.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
+    }
+	
     public Piiripunkt() {
     }
 

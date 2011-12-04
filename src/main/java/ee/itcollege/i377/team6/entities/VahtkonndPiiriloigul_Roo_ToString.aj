@@ -20,8 +20,7 @@ privileged aspect VahtkonndPiiriloigul_Roo_ToString {
         sb.append("Suletud: ").append(getSuletud() == null ? "null" : getSuletud().getTime()).append(", ");
         sb.append("Sulgeja: ").append(getSulgeja()).append(", ");
         sb.append("Vahtkond: ").append(getVahtkond()).append(", ");
-        sb.append("VahtkondPiiriloiulId: ").append(getVahtkondPiiriloiulId()).append(", ");
-        sb.append("Version: ").append(getVersion());
+        sb.append("VahtkondPiiriloiulId: ").append(getVahtkondPiiriloiulId());
         return sb.toString();
     }
     

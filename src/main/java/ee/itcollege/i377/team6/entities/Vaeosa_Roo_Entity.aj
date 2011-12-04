@@ -3,10 +3,7 @@
 
 package ee.itcollege.i377.team6.entities;
 
-import ee.itcollege.i377.team6.entities.Vaeosa;
 import java.lang.Integer;
-import java.lang.Long;
-import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -37,17 +34,6 @@ privileged aspect Vaeosa_Roo_Entity {
     }
     
     @Transactional
-    public void Vaeosa.remove() {
-        if (this.entityManager == null) this.entityManager = entityManager();
-        if (this.entityManager.contains(this)) {
-            this.entityManager.remove(this);
-        } else {
-            Vaeosa attached = Vaeosa.findVaeosa(this.vaeosaIdId);
-            this.entityManager.remove(attached);
-        }
-    }
-    
-    @Transactional
     public void Vaeosa.flush() {
         if (this.entityManager == null) this.entityManager = entityManager();
         this.entityManager.flush();
@@ -75,19 +61,6 @@ privileged aspect Vaeosa_Roo_Entity {
     
     public static long Vaeosa.countVaeosas() {
         return entityManager().createQuery("SELECT COUNT(o) FROM Vaeosa o", Long.class).getSingleResult();
-    }
-    
-    public static List<Vaeosa> Vaeosa.findAllVaeosas() {
-        return entityManager().createQuery("SELECT o FROM Vaeosa o", Vaeosa.class).getResultList();
-    }
-    
-    public static Vaeosa Vaeosa.findVaeosa(Long vaeosaIdId) {
-        if (vaeosaIdId == null) return null;
-        return entityManager().find(Vaeosa.class, vaeosaIdId);
-    }
-    
-    public static List<Vaeosa> Vaeosa.findVaeosaEntries(int firstResult, int maxResults) {
-        return entityManager().createQuery("SELECT o FROM Vaeosa o", Vaeosa.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
     }
     
 }

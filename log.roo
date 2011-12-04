@@ -43,3 +43,8 @@ help
 // Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-12-03 21:47:46
 // Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-12-03 21:59:59
 logging setup --level INFO 
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-12-03 23:13:38
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-12-04 01:12:35
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-12-04 11:53:06
+logging setup --level ERROR 
+web mvc controller --class ee.itcollege.i377.team6.web.PiirivastutuseAruanne

@@ -6,7 +6,6 @@ package ee.itcollege.i377.team6.entities;
 import ee.itcollege.i377.team6.entities.Piiriloik;
 import java.lang.Integer;
 import java.lang.Long;
-import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -34,17 +33,6 @@ privileged aspect Piiriloik_Roo_Entity {
     public void Piiriloik.persist() {
         if (this.entityManager == null) this.entityManager = entityManager();
         this.entityManager.persist(this);
-    }
-    
-    @Transactional
-    public void Piiriloik.remove() {
-        if (this.entityManager == null) this.entityManager = entityManager();
-        if (this.entityManager.contains(this)) {
-            this.entityManager.remove(this);
-        } else {
-            Piiriloik attached = Piiriloik.findPiiriloik(this.piiriloikId);
-            this.entityManager.remove(attached);
-        }
     }
     
     @Transactional
@@ -77,17 +65,9 @@ privileged aspect Piiriloik_Roo_Entity {
         return entityManager().createQuery("SELECT COUNT(o) FROM Piiriloik o", Long.class).getSingleResult();
     }
     
-    public static List<Piiriloik> Piiriloik.findAllPiiriloiks() {
-        return entityManager().createQuery("SELECT o FROM Piiriloik o", Piiriloik.class).getResultList();
-    }
-    
     public static Piiriloik Piiriloik.findPiiriloik(Long piiriloikId) {
         if (piiriloikId == null) return null;
         return entityManager().find(Piiriloik.class, piiriloikId);
-    }
-    
-    public static List<Piiriloik> Piiriloik.findPiiriloikEntries(int firstResult, int maxResults) {
-        return entityManager().createQuery("SELECT o FROM Piiriloik o", Piiriloik.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
     }
     
 }

@@ -39,5 +39,8 @@
             <menu:item id="i_piiripunktialluvus_new" messageCode="global_menu_new" url="/piiripunktialluvuses?form" z="8nqH1r02LupEbqAUSXqXKHsB++g="/>
             <menu:item id="i_piiripunktialluvus_list" messageCode="global_menu_list" url="/piiripunktialluvuses?page=1&amp;size=${empty param.size ? 10 : param.size}" z="HZ2lBjOjYtvHlGp42ZGu6YYOWYQ="/>
         </menu:category>
+        <menu:category id="c_controller" z="nj8Dm3hojIyIEyPkwE1UMDIs+K8=">
+            <menu:item id="i_controller__piirivastutusearuanneindex_id" messageCode="global_generic" url="/piirivastutusearuanne/index" z="Zf3jj8Ymsv2POrzzPPuQDAUI6oo="/>
+        </menu:category>
     </menu:menu>
 </div>

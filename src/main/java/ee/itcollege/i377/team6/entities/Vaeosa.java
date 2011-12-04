@@ -2,6 +2,7 @@ package ee.itcollege.i377.team6.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -14,10 +15,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.roo.addon.entity.RooEntity;
 import org.springframework.roo.addon.tostring.RooToString;
+import org.springframework.transaction.annotation.Transactional;
 
 
 /**
@@ -29,23 +33,35 @@ import org.springframework.roo.addon.tostring.RooToString;
 @RooEntity
 public class Vaeosa extends BaseEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+	
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="VAEOSA_ID_ID")
 	private Long vaeosaIdId;
 
+	@NotNull
+	@Size(max = 20)
+	private String kood;
+	
+	@NotNull
+	@Size(max = 100)
+	private String nimetus;
+	
+	//bi-directional many-to-one association to RiigiAdminYksus
+    @ManyToOne
+	@JoinColumn(name="RIIGI_ADMIN_YKSUS_ID")
+	private RiigiAdminYksus riigiAdminYksus;
+
+    @NotNull
     @Temporal( TemporalType.DATE)
     @DateTimeFormat(style = "M-")
 	private Date alates;
 
-	private String kood;
-
-    @Temporal( TemporalType.DATE)
+    @NotNull
+	@Temporal( TemporalType.DATE)
     @DateTimeFormat(style = "M-")
 	private Date kuni;
-
-   	private String nimetus;
 
    
 	//bi-directional many-to-one association to PiiriloiguHaldaja
@@ -56,10 +72,6 @@ public class Vaeosa extends BaseEntity implements Serializable {
 	@OneToMany(mappedBy="vaeosa")
 	private Set<PiiripunktiAlluvus> piiripunktiAlluvuses;
 
-	//bi-directional many-to-one association to RiigiAdminYksus
-    @ManyToOne
-	@JoinColumn(name="RIIGI_ADMIN_YKSUS_ID")
-	private RiigiAdminYksus riigiAdminYksus;
 
 	//bi-directional many-to-one association to VaeosaAlluvus
 	@OneToMany(mappedBy="vaeosa1")
@@ -73,6 +85,32 @@ public class Vaeosa extends BaseEntity implements Serializable {
 	@OneToMany(mappedBy="vaeosa")
 	private Set<Vahtkond> vahtkonds;
 
+	   @Transactional
+	    public void remove() {
+	        if (this.entityManager == null) this.entityManager = entityManager();
+	        if (this.entityManager.contains(this)) {
+	        	 this.setDeleted();
+	            this.entityManager.merge(this);
+	        } else {
+	            Vaeosa attached = Vaeosa.findVaeosa(this.vaeosaIdId);
+	            this.setDeleted();
+	            this.entityManager.merge(attached);
+	        }
+	    }
+	   
+	    public static List<Vaeosa> findAllVaeosas() {
+	        return entityManager().createQuery("SELECT o FROM Vaeosa o WHERE suletud ='9999-12-31'", Vaeosa.class).getResultList();
+	    }
+	    
+	    public static Vaeosa findVaeosa(Long vaeosaIdId) {
+	        if (vaeosaIdId == null) return null;
+	        return entityManager().find(Vaeosa.class, vaeosaIdId);
+	    }
+	    
+	    public static List<Vaeosa> findVaeosaEntries(int firstResult, int maxResults) {
+	        return entityManager().createQuery("SELECT o FROM Vaeosa o WHERE suletud ='9999-12-31'", Vaeosa.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
+	    }
+	
     public Vaeosa() {
     }
 

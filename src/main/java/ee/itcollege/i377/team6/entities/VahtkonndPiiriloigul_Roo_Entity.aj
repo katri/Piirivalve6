@@ -6,7 +6,6 @@ package ee.itcollege.i377.team6.entities;
 import ee.itcollege.i377.team6.entities.VahtkonndPiiriloigul;
 import java.lang.Integer;
 import java.lang.Long;
-import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -34,17 +33,6 @@ privileged aspect VahtkonndPiiriloigul_Roo_Entity {
     public void VahtkonndPiiriloigul.persist() {
         if (this.entityManager == null) this.entityManager = entityManager();
         this.entityManager.persist(this);
-    }
-    
-    @Transactional
-    public void VahtkonndPiiriloigul.remove() {
-        if (this.entityManager == null) this.entityManager = entityManager();
-        if (this.entityManager.contains(this)) {
-            this.entityManager.remove(this);
-        } else {
-            VahtkonndPiiriloigul attached = VahtkonndPiiriloigul.findVahtkonndPiiriloigul(this.vahtkondPiiriloiulId);
-            this.entityManager.remove(attached);
-        }
     }
     
     @Transactional
@@ -77,17 +65,9 @@ privileged aspect VahtkonndPiiriloigul_Roo_Entity {
         return entityManager().createQuery("SELECT COUNT(o) FROM VahtkonndPiiriloigul o", Long.class).getSingleResult();
     }
     
-    public static List<VahtkonndPiiriloigul> VahtkonndPiiriloigul.findAllVahtkonndPiiriloiguls() {
-        return entityManager().createQuery("SELECT o FROM VahtkonndPiiriloigul o", VahtkonndPiiriloigul.class).getResultList();
-    }
-    
     public static VahtkonndPiiriloigul VahtkonndPiiriloigul.findVahtkonndPiiriloigul(Long vahtkondPiiriloiulId) {
         if (vahtkondPiiriloiulId == null) return null;
         return entityManager().find(VahtkonndPiiriloigul.class, vahtkondPiiriloiulId);
-    }
-    
-    public static List<VahtkonndPiiriloigul> VahtkonndPiiriloigul.findVahtkonndPiiriloigulEntries(int firstResult, int maxResults) {
-        return entityManager().createQuery("SELECT o FROM VahtkonndPiiriloigul o", VahtkonndPiiriloigul.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
     }
     
 }

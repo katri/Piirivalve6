@@ -3,15 +3,17 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <form:update id="fu_ee_itcollege_i377_team6_entities_PiiripunktiAlluvus" idField="piiripunktiAlluvusId" modelAttribute="piiripunktiAlluvus" path="/piiripunktialluvuses" versionField="Version" z="8zrXRmaArC1FRqSEk9ctj71bviw=">
-        <field:input field="kommentaar" id="c_ee_itcollege_i377_team6_entities_PiiripunktiAlluvus_kommentaar" z="/0NPbaMpy8Qjd53YuPKTiskhQeQ="/>
-        <field:input field="avaja" id="c_ee_itcollege_i377_team6_entities_PiiripunktiAlluvus_avaja" z="+hu3trYSoBV6AhHUlXyRfu4lh7s="/>
+        <field:input field="kommentaar" id="c_ee_itcollege_i377_team6_entities_PiiripunktiAlluvus_kommentaar" required="true" z="0wgxgiEXT7yyJPnEoDrIoMyyPrY="/>
+       <div style="display:none">
+        <field:textarea field="avaja" id="c_ee_itcollege_i377_team6_entities_PiiripunktiAlluvus_avaja" z="zQaSI+u5cX3APwfQdjHGi7Mh3tA="/>
         <field:datetime dateTimePattern="${piiripunktiAlluvus_avatud_date_format}" field="avatud" id="c_ee_itcollege_i377_team6_entities_PiiripunktiAlluvus_avatud" z="7eYFKEr05nfl/LhNp21NFMzitDM="/>
-        <field:input field="muutja" id="c_ee_itcollege_i377_team6_entities_PiiripunktiAlluvus_muutja" z="jivqy+XinIdrTg41gBH8t2/KbvE="/>
+        <field:textarea field="muutja" id="c_ee_itcollege_i377_team6_entities_PiiripunktiAlluvus_muutja" z="X6adAu4Gsx2AKKV7Rp6u7ySvOXo="/>
         <field:datetime dateTimePattern="${piiripunktiAlluvus_muudetud_date_format}" field="muudetud" id="c_ee_itcollege_i377_team6_entities_PiiripunktiAlluvus_muudetud" z="c8eHWF7NKHs63mAwC2xWqyh2U1Y="/>
-        <field:input field="sulgeja" id="c_ee_itcollege_i377_team6_entities_PiiripunktiAlluvus_sulgeja" z="WTANUQ08qp7dVr0IFf5ow7m8Lxg="/>
+        <field:textarea field="sulgeja" id="c_ee_itcollege_i377_team6_entities_PiiripunktiAlluvus_sulgeja" z="UE6hmpauxQ86tx3XwUrDPYyyX3A="/>
         <field:datetime dateTimePattern="${piiripunktiAlluvus_suletud_date_format}" field="suletud" id="c_ee_itcollege_i377_team6_entities_PiiripunktiAlluvus_suletud" z="l7zxpKHeOn/E38f7unGwaDlh5DU="/>
-        <field:input field="alates" id="c_ee_itcollege_i377_team6_entities_PiiripunktiAlluvus_alates" z="SzaQRFqTuGf7TdZyCzcvVMPGRiA="/>
-        <field:input field="kuni" id="c_ee_itcollege_i377_team6_entities_PiiripunktiAlluvus_kuni" z="pplw3Vll7G97Pwap4S73LaGPGLc="/>
+       </div>
+        <field:input field="alates" id="c_ee_itcollege_i377_team6_entities_PiiripunktiAlluvus_alates" max="20" required="true" z="ccmjp8c1UZZ/cA4COKxF1xRbptY="/>
+        <field:input field="kuni" id="c_ee_itcollege_i377_team6_entities_PiiripunktiAlluvus_kuni" max="20" required="true" z="dvosYF26MRZPlGdDVvxyOz3x984="/>
         <field:select field="piiripunkt" id="c_ee_itcollege_i377_team6_entities_PiiripunktiAlluvus_piiripunkt" itemValue="piiripunktId" items="${piiripunkts}" path="/piiripunkts" z="mi/43dRpCV3TgCLMVhepcNBw1a0="/>
         <field:select field="vaeosa" id="c_ee_itcollege_i377_team6_entities_PiiripunktiAlluvus_vaeosa" itemValue="vaeosaIdId" items="${vaeosas}" path="/vaeosas" z="oGOwY3/S5RrrxnP4w+x6UvZb2Os="/>
     </form:update>

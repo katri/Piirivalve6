@@ -19,8 +19,7 @@ privileged aspect RiigiAdminYksus_Roo_ToString {
         sb.append("RiigiAdminYksusId: ").append(getRiigiAdminYksusId()).append(", ");
         sb.append("Suletud: ").append(getSuletud() == null ? "null" : getSuletud().getTime()).append(", ");
         sb.append("Sulgeja: ").append(getSulgeja()).append(", ");
-        sb.append("Vaeosas: ").append(getVaeosas() == null ? "null" : getVaeosas().size()).append(", ");
-        sb.append("Version: ").append(getVersion());
+        sb.append("Vaeosas: ").append(getVaeosas() == null ? "null" : getVaeosas().size());
         return sb.toString();
     }
     

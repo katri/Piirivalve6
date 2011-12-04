@@ -1,6 +1,7 @@
 package ee.itcollege.i377.team6.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,6 +14,7 @@ import javax.persistence.Table;
 
 import org.springframework.roo.addon.entity.RooEntity;
 import org.springframework.roo.addon.tostring.RooToString;
+import org.springframework.transaction.annotation.Transactional;
 
 
 /**
@@ -33,6 +35,7 @@ public class PiiriloiguHaldaja extends BaseEntity implements Serializable {
 	private Long piiriloiguHaldajaId;
 
   
+	
 	//bi-directional many-to-one association to Piiriloik
     @ManyToOne
 	@JoinColumn(name="PIIRILOIK_ID")
@@ -48,6 +51,28 @@ public class PiiriloiguHaldaja extends BaseEntity implements Serializable {
 	@JoinColumn(name="VAEOSA_ID_ID")
 	private Vaeosa vaeosa;
 
+    @Transactional
+    public void remove() {
+        if (this.entityManager == null) this.entityManager = entityManager();
+        if (this.entityManager.contains(this)) {
+        	this.setDeleted();
+            this.entityManager.merge(this);
+        } else {
+            PiiriloiguHaldaja attached = PiiriloiguHaldaja.findPiiriloiguHaldaja(this.piiriloiguHaldajaId);
+            this.setDeleted();
+            this.entityManager.merge(attached);
+        }
+    }
+    
+    
+    public static List<PiiriloiguHaldaja> findAllPiiriloiguHaldajas() {
+        return entityManager().createQuery("SELECT o FROM PiiriloiguHaldaja o WHERE suletud ='9999-12-31'", PiiriloiguHaldaja.class).getResultList();
+    }
+    
+    public static List<PiiriloiguHaldaja> findPiiriloiguHaldajaEntries(int firstResult, int maxResults) {
+        return entityManager().createQuery("SELECT o FROM PiiriloiguHaldaja o WHERE suletud ='9999-12-31'", PiiriloiguHaldaja.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
+    }
+    
     public PiiriloiguHaldaja() {
     }
 

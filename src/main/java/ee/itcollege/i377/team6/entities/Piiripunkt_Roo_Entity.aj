@@ -6,7 +6,6 @@ package ee.itcollege.i377.team6.entities;
 import ee.itcollege.i377.team6.entities.Piiripunkt;
 import java.lang.Integer;
 import java.lang.Long;
-import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -34,17 +33,6 @@ privileged aspect Piiripunkt_Roo_Entity {
     public void Piiripunkt.persist() {
         if (this.entityManager == null) this.entityManager = entityManager();
         this.entityManager.persist(this);
-    }
-    
-    @Transactional
-    public void Piiripunkt.remove() {
-        if (this.entityManager == null) this.entityManager = entityManager();
-        if (this.entityManager.contains(this)) {
-            this.entityManager.remove(this);
-        } else {
-            Piiripunkt attached = Piiripunkt.findPiiripunkt(this.piiripunktId);
-            this.entityManager.remove(attached);
-        }
     }
     
     @Transactional
@@ -77,17 +65,9 @@ privileged aspect Piiripunkt_Roo_Entity {
         return entityManager().createQuery("SELECT COUNT(o) FROM Piiripunkt o", Long.class).getSingleResult();
     }
     
-    public static List<Piiripunkt> Piiripunkt.findAllPiiripunkts() {
-        return entityManager().createQuery("SELECT o FROM Piiripunkt o", Piiripunkt.class).getResultList();
-    }
-    
     public static Piiripunkt Piiripunkt.findPiiripunkt(Long piiripunktId) {
         if (piiripunktId == null) return null;
         return entityManager().find(Piiripunkt.class, piiripunktId);
-    }
-    
-    public static List<Piiripunkt> Piiripunkt.findPiiripunktEntries(int firstResult, int maxResults) {
-        return entityManager().createQuery("SELECT o FROM Piiripunkt o", Piiripunkt.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
     }
     
 }

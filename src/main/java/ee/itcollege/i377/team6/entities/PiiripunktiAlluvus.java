@@ -1,6 +1,7 @@
 package ee.itcollege.i377.team6.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,9 +11,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.springframework.roo.addon.entity.RooEntity;
 import org.springframework.roo.addon.tostring.RooToString;
+import org.springframework.transaction.annotation.Transactional;
 
 
 /**
@@ -31,9 +35,14 @@ public class PiiripunktiAlluvus extends BaseEntity implements Serializable {
 	@Column(name="PIIRIPUNKTI_ALLUVUS_ID")
 	private Long piiripunktiAlluvusId;
 
+	@NotNull
+	@Size(max = 20)
 	private String alates;
 
+	@NotNull
+	@Size(max = 20)
 	private String kuni;
+
 
   	//bi-directional many-to-one association to Piiripunkt
     @ManyToOne
@@ -45,6 +54,28 @@ public class PiiripunktiAlluvus extends BaseEntity implements Serializable {
 	@JoinColumn(name="VAEOSA_ID")
 	private Vaeosa vaeosa;
 
+    @Transactional
+    public void remove() {
+        if (this.entityManager == null) this.entityManager = entityManager();
+        if (this.entityManager.contains(this)) {
+        	 this.setDeleted();
+            this.entityManager.merge(this);
+        } else {
+            PiiripunktiAlluvus attached = PiiripunktiAlluvus.findPiiripunktiAlluvus(this.piiripunktiAlluvusId);
+            this.setDeleted();
+            this.entityManager.merge(attached);
+        }
+    }
+    
+    public static List<PiiripunktiAlluvus> findAllPiiripunktiAlluvuses() {
+        return entityManager().createQuery("SELECT o FROM PiiripunktiAlluvus o WHERE suletud ='9999-12-31'", PiiripunktiAlluvus.class).getResultList();
+    }
+    
+   
+    public static List<PiiripunktiAlluvus> findPiiripunktiAlluvusEntries(int firstResult, int maxResults) {
+        return entityManager().createQuery("SELECT o FROM PiiripunktiAlluvus o WHERE suletud ='9999-12-31'", PiiripunktiAlluvus.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
+    }
+    
     public PiiripunktiAlluvus() {
     }
 

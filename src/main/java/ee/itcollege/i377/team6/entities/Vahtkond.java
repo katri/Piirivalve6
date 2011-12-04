@@ -2,6 +2,7 @@ package ee.itcollege.i377.team6.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -14,10 +15,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.roo.addon.entity.RooEntity;
 import org.springframework.roo.addon.tostring.RooToString;
+import org.springframework.transaction.annotation.Transactional;
 
 
 /**
@@ -36,17 +40,22 @@ public class Vahtkond extends BaseEntity implements Serializable {
 	@Column(name="VAHTKOND_ID")
 	private Long vahtkondId;
 	
+	@NotNull
+	@Size(max = 20)
+	private String kood;
+	
+	@NotNull
+	@Size(max = 60)
+	private String nimetus;
+	
 	@Temporal( TemporalType.DATE)
 	@DateTimeFormat(style = "M-")
 	private Date alates;
 
-	private String kood;
-	
 	@Temporal( TemporalType.DATE)
 	@DateTimeFormat(style = "M-")
 	private Date kuni;
-	 
-	private String nimetus;
+	
 	
 	//bi-directional many-to-one association to Piiripunkt
     @ManyToOne
@@ -62,6 +71,30 @@ public class Vahtkond extends BaseEntity implements Serializable {
 	@OneToMany(mappedBy="vahtkond")
 	private Set<VahtkonndPiiriloigul> vahtkonndPiiriloiguls;
 
+    @Transactional
+    public void remove() {
+        if (this.entityManager == null) this.entityManager = entityManager();
+        if (this.entityManager.contains(this)) {
+        	this.setDeleted();
+            this.entityManager.merge(this);
+            
+        } else {
+            Vahtkond attached = Vahtkond.findVahtkond(this.vahtkondId);
+            this.setDeleted();
+            this.entityManager.merge(attached);
+            
+        }
+    }
+	
+    public static List<Vahtkond> findAllVahtkonds() {
+        return entityManager().createQuery("SELECT o FROM Vahtkond o WHERE suletud ='9999-12-31'", Vahtkond.class).getResultList();
+    }
+    
+    
+    public static List<Vahtkond> findVahtkondEntries(int firstResult, int maxResults) {
+        return entityManager().createQuery("SELECT o FROM Vahtkond o WHERE suletud ='9999-12-31'", Vahtkond.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
+    }
+    
     public Vahtkond() {
     }
 

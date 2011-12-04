@@ -2,6 +2,7 @@ package ee.itcollege.i377.team6.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,10 +14,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.roo.addon.entity.RooEntity;
 import org.springframework.roo.addon.tostring.RooToString;
+import org.springframework.transaction.annotation.Transactional;
 
 
 /**
@@ -35,25 +38,47 @@ public class VahtkonndPiiriloigul extends BaseEntity implements Serializable {
 	@Column(name="VAHTKOND_PIIRILOIUL_ID")
 	private Long vahtkondPiiriloiulId;
 	
-	@Temporal( TemporalType.DATE)
-	@DateTimeFormat(style = "M-")
-	private Date alates;
-
-	@Temporal( TemporalType.DATE)
-	@DateTimeFormat(style = "M-")
-	private Date kuni;
-	
-
-	//bi-directional many-to-one association to Piiriloik
-    @ManyToOne
-	@JoinColumn(name="PIIRILOIK_ID")
-	private Piiriloik piiriloik;
-
 	//bi-directional many-to-one association to Vahtkond
     @ManyToOne
 	@JoinColumn(name="VAHTKOND_ID")
 	private Vahtkond vahtkond;
+	
+  //bi-directional many-to-one association to Piiriloik
+    @ManyToOne
+	@JoinColumn(name="PIIRILOIK_ID")
+	private Piiriloik piiriloik;
 
+    @NotNull
+	@Temporal( TemporalType.DATE)
+	@DateTimeFormat(style = "M-")
+	private Date alates;
+
+    @NotNull
+	@Temporal( TemporalType.DATE)
+	@DateTimeFormat(style = "M-")
+	private Date kuni;
+	
+    @Transactional
+    public void remove() {
+        if (this.entityManager == null) this.entityManager = entityManager();
+        if (this.entityManager.contains(this)) {
+        	this.setDeleted();
+            this.entityManager.merge(this);
+        } else {
+            VahtkonndPiiriloigul attached = VahtkonndPiiriloigul.findVahtkonndPiiriloigul(this.vahtkondPiiriloiulId);
+            this.setDeleted();
+            this.entityManager.merge(attached);
+        }
+    }
+    
+    public static List<VahtkonndPiiriloigul> findAllVahtkonndPiiriloiguls() {
+        return entityManager().createQuery("SELECT o FROM VahtkonndPiiriloigul o WHERE suletud ='9999-12-31'", VahtkonndPiiriloigul.class).getResultList();
+    }
+    
+    public static List<VahtkonndPiiriloigul> findVahtkonndPiiriloigulEntries(int firstResult, int maxResults) {
+        return entityManager().createQuery("SELECT o FROM VahtkonndPiiriloigul o WHERE suletud ='9999-12-31'", VahtkonndPiiriloigul.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
+    }
+    
     public VahtkonndPiiriloigul() {
     }
 

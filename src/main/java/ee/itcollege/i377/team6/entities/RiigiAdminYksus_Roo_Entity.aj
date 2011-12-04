@@ -6,7 +6,6 @@ package ee.itcollege.i377.team6.entities;
 import ee.itcollege.i377.team6.entities.RiigiAdminYksus;
 import java.lang.Integer;
 import java.lang.Long;
-import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -34,17 +33,6 @@ privileged aspect RiigiAdminYksus_Roo_Entity {
     public void RiigiAdminYksus.persist() {
         if (this.entityManager == null) this.entityManager = entityManager();
         this.entityManager.persist(this);
-    }
-    
-    @Transactional
-    public void RiigiAdminYksus.remove() {
-        if (this.entityManager == null) this.entityManager = entityManager();
-        if (this.entityManager.contains(this)) {
-            this.entityManager.remove(this);
-        } else {
-            RiigiAdminYksus attached = RiigiAdminYksus.findRiigiAdminYksus(this.riigiAdminYksusId);
-            this.entityManager.remove(attached);
-        }
     }
     
     @Transactional
@@ -77,17 +65,9 @@ privileged aspect RiigiAdminYksus_Roo_Entity {
         return entityManager().createQuery("SELECT COUNT(o) FROM RiigiAdminYksus o", Long.class).getSingleResult();
     }
     
-    public static List<RiigiAdminYksus> RiigiAdminYksus.findAllRiigiAdminYksuses() {
-        return entityManager().createQuery("SELECT o FROM RiigiAdminYksus o", RiigiAdminYksus.class).getResultList();
-    }
-    
     public static RiigiAdminYksus RiigiAdminYksus.findRiigiAdminYksus(Long riigiAdminYksusId) {
         if (riigiAdminYksusId == null) return null;
         return entityManager().find(RiigiAdminYksus.class, riigiAdminYksusId);
-    }
-    
-    public static List<RiigiAdminYksus> RiigiAdminYksus.findRiigiAdminYksusEntries(int firstResult, int maxResults) {
-        return entityManager().createQuery("SELECT o FROM RiigiAdminYksus o", RiigiAdminYksus.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
     }
     
 }

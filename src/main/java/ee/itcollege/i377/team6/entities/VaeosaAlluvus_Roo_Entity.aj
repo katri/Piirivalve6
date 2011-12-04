@@ -6,7 +6,6 @@ package ee.itcollege.i377.team6.entities;
 import ee.itcollege.i377.team6.entities.VaeosaAlluvus;
 import java.lang.Integer;
 import java.lang.Long;
-import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -34,17 +33,6 @@ privileged aspect VaeosaAlluvus_Roo_Entity {
     public void VaeosaAlluvus.persist() {
         if (this.entityManager == null) this.entityManager = entityManager();
         this.entityManager.persist(this);
-    }
-    
-    @Transactional
-    public void VaeosaAlluvus.remove() {
-        if (this.entityManager == null) this.entityManager = entityManager();
-        if (this.entityManager.contains(this)) {
-            this.entityManager.remove(this);
-        } else {
-            VaeosaAlluvus attached = VaeosaAlluvus.findVaeosaAlluvus(this.vaeosaAlluvusId);
-            this.entityManager.remove(attached);
-        }
     }
     
     @Transactional
@@ -77,17 +65,9 @@ privileged aspect VaeosaAlluvus_Roo_Entity {
         return entityManager().createQuery("SELECT COUNT(o) FROM VaeosaAlluvus o", Long.class).getSingleResult();
     }
     
-    public static List<VaeosaAlluvus> VaeosaAlluvus.findAllVaeosaAlluvuses() {
-        return entityManager().createQuery("SELECT o FROM VaeosaAlluvus o", VaeosaAlluvus.class).getResultList();
-    }
-    
     public static VaeosaAlluvus VaeosaAlluvus.findVaeosaAlluvus(Long vaeosaAlluvusId) {
         if (vaeosaAlluvusId == null) return null;
         return entityManager().find(VaeosaAlluvus.class, vaeosaAlluvusId);
-    }
-    
-    public static List<VaeosaAlluvus> VaeosaAlluvus.findVaeosaAlluvusEntries(int firstResult, int maxResults) {
-        return entityManager().createQuery("SELECT o FROM VaeosaAlluvus o", VaeosaAlluvus.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
     }
     
 }

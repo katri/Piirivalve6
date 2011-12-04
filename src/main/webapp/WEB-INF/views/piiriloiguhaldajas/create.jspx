@@ -3,13 +3,13 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <form:create id="fc_ee_itcollege_i377_team6_entities_PiiriloiguHaldaja" modelAttribute="piiriloiguHaldaja" path="/piiriloiguhaldajas" render="${empty dependencies}" z="IkMBX/NzViNf621TWqvTvXPNmjU=">
-        <field:input field="avaja" id="c_ee_itcollege_i377_team6_entities_PiiriloiguHaldaja_avaja" z="aFAbGYu0PEJ1/auvGvf/sPE+5r8="/>
-        <field:datetime dateTimePattern="${piiriloiguHaldaja_avatud_date_format}" field="avatud" id="c_ee_itcollege_i377_team6_entities_PiiriloiguHaldaja_avatud" z="U0iW03amDZa5HWB8myRGGTui2lw="/>
-        <field:input field="kommentaar" id="c_ee_itcollege_i377_team6_entities_PiiriloiguHaldaja_kommentaar" z="N4UHfUwIAjZ/RJCTXdXDE0l3Q84="/>
-        <field:datetime dateTimePattern="${piiriloiguHaldaja_muudetud_date_format}" field="muudetud" id="c_ee_itcollege_i377_team6_entities_PiiriloiguHaldaja_muudetud" z="VRc5kkX0aL2mqybn+EgMcd3+Sus="/>
-        <field:input field="muutja" id="c_ee_itcollege_i377_team6_entities_PiiriloiguHaldaja_muutja" z="iXuA0v72a3qOj6UdpuV5MvergOQ="/>
-        <field:datetime dateTimePattern="${piiriloiguHaldaja_suletud_date_format}" field="suletud" id="c_ee_itcollege_i377_team6_entities_PiiriloiguHaldaja_suletud" z="gquUBS70fV3sJZlKJ/DzxRqfe9o="/>
-        <field:input field="sulgeja" id="c_ee_itcollege_i377_team6_entities_PiiriloiguHaldaja_sulgeja" z="znQBPdmz7KDZfiiVUR7Ck2k6fFs="/>
+        <field:textarea field="avaja" id="c_ee_itcollege_i377_team6_entities_PiiriloiguHaldaja_avaja" render="false" required="true" z="user-managed"/>
+        <field:datetime dateTimePattern="${piiriloiguHaldaja_avatud_date_format}" field="avatud" id="c_ee_itcollege_i377_team6_entities_PiiriloiguHaldaja_avatud" render="false" required="true" z="user-managed"/>
+        <field:input field="kommentaar" id="c_ee_itcollege_i377_team6_entities_PiiriloiguHaldaja_kommentaar" required="true" z="4qOIKMJquZRmo1uV7lsNuJ8jTW8="/>
+        <field:datetime dateTimePattern="${piiriloiguHaldaja_muudetud_date_format}" field="muudetud" id="c_ee_itcollege_i377_team6_entities_PiiriloiguHaldaja_muudetud" render="false" required="true" z="user-managed"/>
+        <field:textarea field="muutja" id="c_ee_itcollege_i377_team6_entities_PiiriloiguHaldaja_muutja" render="false" required="true" z="user-managed"/>
+        <field:datetime dateTimePattern="${piiriloiguHaldaja_suletud_date_format}" field="suletud" id="c_ee_itcollege_i377_team6_entities_PiiriloiguHaldaja_suletud" render="false" required="true" z="user-managed"/>
+        <field:textarea field="sulgeja" id="c_ee_itcollege_i377_team6_entities_PiiriloiguHaldaja_sulgeja" render="false" required="true" z="user-managed"/>
         <field:select field="piiriloik" id="c_ee_itcollege_i377_team6_entities_PiiriloiguHaldaja_piiriloik" itemValue="piiriloikId" items="${piiriloiks}" path="/piiriloiks" z="X8F8TPJ2n2ebXFusHm6hmou2vGo="/>
         <field:select field="piiripunkt" id="c_ee_itcollege_i377_team6_entities_PiiriloiguHaldaja_piiripunkt" itemValue="piiripunktId" items="${piiripunkts}" path="/piiripunkts" z="F54UbOe9AFNhkAWrzSHbxayQ92U="/>
         <field:select field="vaeosa" id="c_ee_itcollege_i377_team6_entities_PiiriloiguHaldaja_vaeosa" itemValue="vaeosaIdId" items="${vaeosas}" path="/vaeosas" z="mQqKOafPTwL2xkwlbMeG0NvpxkA="/>

@@ -8,33 +8,41 @@ import javax.persistence.PreRemove;
 import javax.persistence.PreUpdate;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 //Baasklass, mis tegutseb tegevusi logivate olemitega
 
+@RooJavaBean
 @MappedSuperclass
 public class BaseEntity {
 	
-	
+	@NotNull
 	private String kommentaar;
 	
+	@Size(max = 32)
 	private String avaja;
+	
 	
 	@Temporal( TemporalType.DATE)
 	@DateTimeFormat(style = "M-")
 	private Calendar avatud;
 	
-	
+	@Size(max = 32)
 	private String muutja;
+	
 	
 	@Temporal( TemporalType.DATE)
 	@DateTimeFormat(style = "M-")
 	private Calendar muudetud;
 	
-	
+	@Size(max = 32)
 	private String sulgeja;
+	
 	
 	@Temporal( TemporalType.DATE)
 	@DateTimeFormat(style = "M-")
@@ -45,20 +53,24 @@ public class BaseEntity {
 		String currentUser = SecurityContextHolder.getContext().getAuthentication().getName();
 		Calendar now = Calendar.getInstance();
 		setOpen(currentUser, now);
-		setModified(currentUser, now);
-		setTemporaryClosedDate();
+		setModified(currentUser, temporaryClosedDate());
+		setClosed(currentUser, temporaryClosedDate());
 	}
 	
 	@PreUpdate
 	public void setUpdated() {
 		String currentUser = SecurityContextHolder.getContext().getAuthentication().getName();
 		Calendar now = Calendar.getInstance();
+		
 		setModified(currentUser, now);
+	
 	}
 	
 	@PreRemove
-	public void preventRemoval() {
-		throw new SecurityException("Ei saa kustutada!");
+	public void setDeleted() {
+		Calendar now = Calendar.getInstance();
+		String currentUser = SecurityContextHolder.getContext().getAuthentication().getName();
+		setClosed(currentUser, now);
 	}
 	
 	private void setOpen(String user, Calendar date) {
@@ -71,21 +83,20 @@ public class BaseEntity {
 		this.muudetud = date;
 	}
 	
-	private void setTemporaryClosedDate() {
+	private void setClosed(String user, Calendar date) {
+		this.suletud = date;
+		this.sulgeja = user;
+	}
+	
+	private Calendar temporaryClosedDate() {
 		Calendar tempDate = Calendar.getInstance();
 		tempDate.clear();
 		tempDate.set(Calendar.YEAR, 9999);
 		tempDate.set(Calendar.MONTH, Calendar.DECEMBER);
 		tempDate.set(Calendar.DAY_OF_MONTH, 31);
-		this.suletud = tempDate;
+		return tempDate;
 	}
 	
-	public void close() {
-		Calendar now = Calendar.getInstance();
-		String currentUser = SecurityContextHolder.getContext().getAuthentication().getName();
-		this.suletud = now;
-		this.sulgeja = currentUser;
-	}
 	
 	
 	public String getKommentaar() {

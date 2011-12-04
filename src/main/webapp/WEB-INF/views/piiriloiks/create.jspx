@@ -3,17 +3,24 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <form:create id="fc_ee_itcollege_i377_team6_entities_Piiriloik" modelAttribute="piiriloik" path="/piiriloiks" render="${empty dependencies}" z="q13n0wptr2HyF+GTw6fDOamo1eg=">
-        <field:input field="avaja" id="c_ee_itcollege_i377_team6_entities_Piiriloik_avaja" z="kKbgLVMftRSTHwEV/16BFQlFphE="/>
-        <field:datetime dateTimePattern="${piiriloik_avatud_date_format}" field="avatud" id="c_ee_itcollege_i377_team6_entities_Piiriloik_avatud" z="psv/laC+U8sYIjw/hmiKqJ8sseg="/>
+       
         <field:input field="gpsKoordinaadid" id="c_ee_itcollege_i377_team6_entities_Piiriloik_gpsKoordinaadid" z="1srrEvHWwiiWXUAIxziK+frialk="/>
-        <field:input field="kommentaar" id="c_ee_itcollege_i377_team6_entities_Piiriloik_kommentaar" z="V6xnlceQ+qEjYEPxej4B9KC1Tjc="/>
-        <field:input field="kood" id="c_ee_itcollege_i377_team6_entities_Piiriloik_kood" z="SCOdydMQjF/HXf5fkI1tVCjeGto="/>
-        <field:datetime dateTimePattern="${piiriloik_muudetud_date_format}" field="muudetud" id="c_ee_itcollege_i377_team6_entities_Piiriloik_muudetud" z="lcCbe5OCC9JKHwBo5BUbbRTvDfM="/>
-        <field:input field="muutja" id="c_ee_itcollege_i377_team6_entities_Piiriloik_muutja" z="C+67fHUn1mDZ3YzcpFSLgdiXALY="/>
-        <field:input field="nimetus" id="c_ee_itcollege_i377_team6_entities_Piiriloik_nimetus" z="5TT51cxGblra7ovbyf8YlkGxaVM="/>
-        <field:datetime dateTimePattern="${piiriloik_suletud_date_format}" field="suletud" id="c_ee_itcollege_i377_team6_entities_Piiriloik_suletud" z="sK9fo4X295dQYFFUqMgfyNGR/fA="/>
-        <field:input field="sulgeja" id="c_ee_itcollege_i377_team6_entities_Piiriloik_sulgeja" z="DAa3tckZTKqaQf/VJ6qY6wdMiUA="/>
+        <field:input field="kommentaar" id="c_ee_itcollege_i377_team6_entities_Piiriloik_kommentaar" required="true" z="yicKeRi+FnWfzIZmOQf1t8q7+M4="/>
+        <field:input field="kood" id="c_ee_itcollege_i377_team6_entities_Piiriloik_kood" max="20" required="true" z="9uYwKamkVbdQTLlN+2ILE3VPlpE="/>
+        
+        <field:textarea field="nimetus" id="c_ee_itcollege_i377_team6_entities_Piiriloik_nimetus" required="true" z="pS9YF4OCwlLNBpyFMZRCAFjyyEw="/>
+        
         <field:simple field="vahtkonndPiiriloiguls" id="c_ee_itcollege_i377_team6_entities_Piiriloik_vahtkonndPiiriloiguls" messageCode="entity_reference_not_managed" messageCodeAttribute="Vahtkonnd Piiriloigul" z="Zoq6N1pom362CP4cppvqfjfF7ck="/>
+    
+
+
+    <field:datetime dateTimePattern="${piiriloik_suletud_date_format}" field="suletud" id="c_ee_itcollege_i377_team6_entities_Piiriloik_suletud" render="false" required="true" z="user-managed"/>
+        <field:textarea field="sulgeja" id="c_ee_itcollege_i377_team6_entities_Piiriloik_sulgeja" render="false" required="true" z="user-managed"/>
+         <field:textarea field="avaja" id="c_ee_itcollege_i377_team6_entities_Piiriloik_avaja" render="false" required="true" z="user-managed"/>
+        <field:datetime dateTimePattern="${piiriloik_avatud_date_format}" field="avatud" id="c_ee_itcollege_i377_team6_entities_Piiriloik_avatud" render="false" required="true" z="user-managed"/>
+        <field:datetime dateTimePattern="${piiriloik_muudetud_date_format}" field="muudetud" id="c_ee_itcollege_i377_team6_entities_Piiriloik_muudetud" render="false" required="true" z="user-managed"/>
+        <field:textarea field="muutja" id="c_ee_itcollege_i377_team6_entities_Piiriloik_muutja" render="false" required="true" z="user-managed"/>
+        
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_ee_itcollege_i377_team6_entities_Piiriloik" render="${not empty dependencies}" z="5I9Xkzq3gMtdoliW6NBLstDesfg="/>
 </div>

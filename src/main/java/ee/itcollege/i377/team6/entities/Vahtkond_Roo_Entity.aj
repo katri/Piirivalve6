@@ -6,7 +6,6 @@ package ee.itcollege.i377.team6.entities;
 import ee.itcollege.i377.team6.entities.Vahtkond;
 import java.lang.Integer;
 import java.lang.Long;
-import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -34,17 +33,6 @@ privileged aspect Vahtkond_Roo_Entity {
     public void Vahtkond.persist() {
         if (this.entityManager == null) this.entityManager = entityManager();
         this.entityManager.persist(this);
-    }
-    
-    @Transactional
-    public void Vahtkond.remove() {
-        if (this.entityManager == null) this.entityManager = entityManager();
-        if (this.entityManager.contains(this)) {
-            this.entityManager.remove(this);
-        } else {
-            Vahtkond attached = Vahtkond.findVahtkond(this.vahtkondId);
-            this.entityManager.remove(attached);
-        }
     }
     
     @Transactional
@@ -77,17 +65,9 @@ privileged aspect Vahtkond_Roo_Entity {
         return entityManager().createQuery("SELECT COUNT(o) FROM Vahtkond o", Long.class).getSingleResult();
     }
     
-    public static List<Vahtkond> Vahtkond.findAllVahtkonds() {
-        return entityManager().createQuery("SELECT o FROM Vahtkond o", Vahtkond.class).getResultList();
-    }
-    
     public static Vahtkond Vahtkond.findVahtkond(Long vahtkondId) {
         if (vahtkondId == null) return null;
         return entityManager().find(Vahtkond.class, vahtkondId);
-    }
-    
-    public static List<Vahtkond> Vahtkond.findVahtkondEntries(int firstResult, int maxResults) {
-        return entityManager().createQuery("SELECT o FROM Vahtkond o", Vahtkond.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
     }
     
 }

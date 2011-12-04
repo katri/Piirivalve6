@@ -39,6 +39,7 @@ public class PiiriloikController {
         
         
         uiModel.asMap().clear();
+      
         piiriloik.merge();
         return "redirect:/piiriloiks/" + encodeUrlPathSegment(piiriloik.getPiiriloikId().toString(), httpServletRequest);
     }

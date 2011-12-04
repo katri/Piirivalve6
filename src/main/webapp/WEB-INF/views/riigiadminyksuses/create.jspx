@@ -3,16 +3,16 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <form:create id="fc_ee_itcollege_i377_team6_entities_RiigiAdminYksus" modelAttribute="riigiAdminYksus" path="/riigiadminyksuses" render="${empty dependencies}" z="KlvGOC+HGf7ExRt9yiwLXGPuZoo=">
-        <field:input field="kood" id="c_ee_itcollege_i377_team6_entities_RiigiAdminYksus_kood" z="4DQ/7kPDIO5JTUsELFMI2Yl/z0I="/>
-        <field:input field="nimetus" id="c_ee_itcollege_i377_team6_entities_RiigiAdminYksus_nimetus" z="HXSWAf48nwHre49TzHMxaQPqlFU="/>
+        <field:input field="kood" id="c_ee_itcollege_i377_team6_entities_RiigiAdminYksus_kood" max="20" required="true" z="KBm5aLn4TEwUUs+PNMKNWMYm8Qc="/>
+        <field:textarea field="nimetus" id="c_ee_itcollege_i377_team6_entities_RiigiAdminYksus_nimetus" required="true" z="CDNd2o20J5s2Wg6bl3gEzIgXjww="/>
         <field:simple field="vaeosas" id="c_ee_itcollege_i377_team6_entities_RiigiAdminYksus_vaeosas" messageCode="entity_reference_not_managed" messageCodeAttribute="Vaeosa" z="+Wi3Ui+UCgfKL+uM9YH1qvx9ajI="/>
-        <field:input field="kommentaar" id="c_ee_itcollege_i377_team6_entities_RiigiAdminYksus_kommentaar" z="00bm2ovoD7+PVl2o6RzWbFSSVbk="/>
-        <field:input field="avaja" id="c_ee_itcollege_i377_team6_entities_RiigiAdminYksus_avaja" z="poDiu+u0Diwe4DpHj1Ce8kQZfQM="/>
-        <field:datetime dateTimePattern="${riigiAdminYksus_avatud_date_format}" field="avatud" id="c_ee_itcollege_i377_team6_entities_RiigiAdminYksus_avatud" z="WVIvgPM08vWkupBcZV0L6dbNtc4="/>
-        <field:input field="muutja" id="c_ee_itcollege_i377_team6_entities_RiigiAdminYksus_muutja" z="Ru53rQRdKTm4T7iesbZt739mmGM="/>
-        <field:datetime dateTimePattern="${riigiAdminYksus_muudetud_date_format}" field="muudetud" id="c_ee_itcollege_i377_team6_entities_RiigiAdminYksus_muudetud" z="UGM8WJUIG+1sJlgoHovwuzf0ej4="/>
-        <field:input field="sulgeja" id="c_ee_itcollege_i377_team6_entities_RiigiAdminYksus_sulgeja" z="PzDJ5KbZskc/pkBlgjvNF7DFl2o="/>
-        <field:datetime dateTimePattern="${riigiAdminYksus_suletud_date_format}" field="suletud" id="c_ee_itcollege_i377_team6_entities_RiigiAdminYksus_suletud" z="dbdyDRr4b5fFKMaB6Ee6Bff/Ljg="/>
+        <field:input field="kommentaar" id="c_ee_itcollege_i377_team6_entities_RiigiAdminYksus_kommentaar" required="true" z="a8euKZgsUv54olFeMB7M+mKAXOQ="/>
+        <field:input field="avaja" id="c_ee_itcollege_i377_team6_entities_RiigiAdminYksus_avaja" render="false" z="user-managed"/>
+        <field:datetime dateTimePattern="${riigiAdminYksus_avatud_date_format}" field="avatud" id="c_ee_itcollege_i377_team6_entities_RiigiAdminYksus_avatud" render="false" z="user-managed"/>
+        <field:input field="muutja" id="c_ee_itcollege_i377_team6_entities_RiigiAdminYksus_muutja" render="false" z="user-managed"/>
+        <field:datetime dateTimePattern="${riigiAdminYksus_muudetud_date_format}" field="muudetud" id="c_ee_itcollege_i377_team6_entities_RiigiAdminYksus_muudetud" render="false" z="user-managed"/>
+        <field:input field="sulgeja" id="c_ee_itcollege_i377_team6_entities_RiigiAdminYksus_sulgeja" render="false" z="user-managed"/>
+        <field:datetime dateTimePattern="${riigiAdminYksus_suletud_date_format}" field="suletud" id="c_ee_itcollege_i377_team6_entities_RiigiAdminYksus_suletud" render="false" z="user-managed"/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_ee_itcollege_i377_team6_entities_RiigiAdminYksus" render="${not empty dependencies}" z="uFP8SLtWmSb9emwu5PFu6zo9TFQ="/>
 </div>

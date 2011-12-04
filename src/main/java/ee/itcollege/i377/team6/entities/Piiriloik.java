@@ -5,6 +5,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -13,14 +14,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.roo.addon.entity.RooEntity;
 import org.springframework.roo.addon.tostring.RooToString;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.transaction.annotation.Transactional;
 
 
 /**
@@ -30,6 +31,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 @Entity
 @RooToString
 @RooEntity
+@Transactional
 public class Piiriloik extends BaseEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
@@ -38,19 +40,17 @@ public class Piiriloik extends BaseEntity implements Serializable {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="PIIRILOIK_ID")
 	private Long piiriloikId;
-
-  
+	
+	@NotNull
+	@Size(max = 20)
+	private String kood;
+	
+	@NotNull
+	@Size(max = 60)
+	private String nimetus;
     	
 	@Column(name="GPS_KOORDINAADID")
 	private String gpsKoordinaadid;
-
-	private String kood;
-
-  	private String nimetus;
-
-    @Temporal( TemporalType.DATE)
-    @DateTimeFormat(style = "M-")
-	
 
 	//bi-directional many-to-one association to PiiriloiguHaldaja
 	@OneToMany(mappedBy="piiriloik")
@@ -61,6 +61,28 @@ public class Piiriloik extends BaseEntity implements Serializable {
 	@OneToMany(mappedBy="piiriloik")
 	private Set<VahtkonndPiiriloigul> vahtkonndPiiriloiguls;
 
+	@Transactional
+    public void remove() {
+        if (this.entityManager == null) this.entityManager = entityManager();
+        if (this.entityManager.contains(this)) {
+        	this.setDeleted();
+        	this.entityManager.merge(this);
+        } else {
+            Piiriloik attached = Piiriloik.findPiiriloik(this.piiriloikId);
+            this.setDeleted();
+            this.entityManager.merge(attached);
+        }
+    }
+    
+    public static List<Piiriloik> findAllPiiriloiks() {
+        return entityManager().createQuery("SELECT o FROM Piiriloik o WHERE suletud ='9999-12-31'", Piiriloik.class).getResultList();
+    }
+    
+      
+    public static List<Piiriloik> findPiiriloikEntries(int firstResult, int maxResults) {
+        return entityManager().createQuery("SELECT o FROM Piiriloik o WHERE suletud ='9999-12-31'", Piiriloik.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
+    }
+	
     public Piiriloik() {
     }
     //haldajaMuutmine
@@ -73,11 +95,10 @@ public class Piiriloik extends BaseEntity implements Serializable {
 
 	// Määrab piirilõiguhaldajate setiks parasjagu need read, mis piirilõiguhaldajate olemis
 	// selle konkreetse piirilõigu ID-d omavad
+	
 	public void setPiiriloiguHaldajas(Vaeosa newVaeosa) throws ParseException {
 		this.piiriloiguHaldajas = manageRelations(this.piiriloiguHaldajas, newVaeosa);
 	
-		
-		
 	}
 	
 /*Haldab piirilõiguhaldaja tabeli muudatusi ja logimist selles
@@ -102,39 +123,11 @@ public class Piiriloik extends BaseEntity implements Serializable {
 */
 	private Set<PiiriloiguHaldaja> manageRelations(Set<PiiriloiguHaldaja> oldSet, Vaeosa newVaeosa) throws ParseException {
 		
-		// Tänast kuupäeva läheb ikka vaja
-		DateFormat dateFormat = new SimpleDateFormat("yyyy.mm.dd");		
-		Date now = new Date();
-		
-		//kauge tulevik
-		
-		Date future = (Date)dateFormat.parse("31.12.9999"); 
-		
-		//kasutajanimi
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-	    String userName = auth.getName();
-		
+				
 		//Teeme tagastatava uue piirilõiguHaldaja objekti
 		PiiriloiguHaldaja workObject= new PiiriloiguHaldaja();
 		
-		// Kui vana set on tühi, siis teeme lihtsalt uue kirje
-		if(oldSet==null){
-			//workObject.setAlates(now);
-			workObject.setAvaja(userName);
-			//workObject.setAvatud(now);
-			//workObject.setMuudetud(future);
-			workObject.setMuutja(userName);
-			// ei ole vist vaja-tuleb is? workObject.setPiiriloiguHaldajaId();
-			workObject.setPiiriloik(this);
-			workObject.setPiiripunkt(null);
-			//workObject.setSuletud(future);
-			
-			workObject.setSulgeja(userName);
-			workObject.setVaeosa(newVaeosa);
-			
-			
-		}
-		else{
+	
 		
 		//Leiame kõige uuema kuupäevaga "kuni" kirje vanas piiriloiguhaldaja setis. 
 		Date uusimKpv;
@@ -146,9 +139,9 @@ public class Piiriloik extends BaseEntity implements Serializable {
 				workObject=o;
 		}*/
 		// Kui uus väeosa ID on sama, mis uus ja kuni kpv on täna või hilisem siis ei tehta midagi - st tagastatkse sama set.
-		}
 		
-		return ((Set<PiiriloiguHaldaja>) PiiriloiguHaldaja.findAllPiiriloiguHaldajas());
+		
+		return null;
 	}
 	
 	

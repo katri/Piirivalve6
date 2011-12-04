@@ -4,12 +4,14 @@
     <jsp:output omit-xml-declaration="yes"/>
     <form:update id="fu_ee_itcollege_i377_team6_entities_Vaeosa" idField="vaeosaIdId" modelAttribute="vaeosa" path="/vaeosas" versionField="Version" z="i+iONLvDw1MC/uPuFd2+I95WrUc=">
         <field:input field="kommentaar" id="c_ee_itcollege_i377_team6_entities_Vaeosa_kommentaar" z="enuR6X/PxtUgQnJLEBmTmTYABp4="/>
-        <field:input field="avaja" id="c_ee_itcollege_i377_team6_entities_Vaeosa_avaja" z="4WxauhjgQCh3UCAGy1w8OkGO5qk="/>
+       <div style="display:none">
+        <field:inputfield="avaja" id="c_ee_itcollege_i377_team6_entities_Vaeosa_avaja" z="4WxauhjgQCh3UCAGy1w8OkGO5qk="/>
         <field:datetime dateTimePattern="${vaeosa_avatud_date_format}" field="avatud" id="c_ee_itcollege_i377_team6_entities_Vaeosa_avatud" z="HtS0BQ4J1fH/ouBT5ZE1jR46XOY="/>
-        <field:input field="muutja" id="c_ee_itcollege_i377_team6_entities_Vaeosa_muutja" z="rZNZoofAsym2L+KCZUgSVnpegPY="/>
+        <field:inputfield="muutja" id="c_ee_itcollege_i377_team6_entities_Vaeosa_muutja" z="rZNZoofAsym2L+KCZUgSVnpegPY="/>
         <field:datetime dateTimePattern="${vaeosa_muudetud_date_format}" field="muudetud" id="c_ee_itcollege_i377_team6_entities_Vaeosa_muudetud" z="1ByrxQIKyVcZX+0LOtShKHJJa3Y="/>
         <field:input field="sulgeja" id="c_ee_itcollege_i377_team6_entities_Vaeosa_sulgeja" z="zQW6557pjVx1jaZsWcqc9XykuJg="/>
         <field:datetime dateTimePattern="${vaeosa_suletud_date_format}" field="suletud" id="c_ee_itcollege_i377_team6_entities_Vaeosa_suletud" z="Jden/+PYd0+wDXDPRRGKph0vo6I="/>
+        </div>
         <field:datetime dateTimePattern="${vaeosa_alates_date_format}" field="alates" id="c_ee_itcollege_i377_team6_entities_Vaeosa_alates" z="F/C89pzyz9UyH9+uM1W+Fv2hvQs="/>
         <field:input field="kood" id="c_ee_itcollege_i377_team6_entities_Vaeosa_kood" z="IEy0Dra98GfKt//3UL5BjQT19mQ="/>
         <field:datetime dateTimePattern="${vaeosa_kuni_date_format}" field="kuni" id="c_ee_itcollege_i377_team6_entities_Vaeosa_kuni" z="wv7TBOztar44c4Cv6Ew5Q/oKxrA="/>

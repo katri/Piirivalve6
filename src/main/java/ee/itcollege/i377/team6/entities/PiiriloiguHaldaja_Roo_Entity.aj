@@ -6,7 +6,6 @@ package ee.itcollege.i377.team6.entities;
 import ee.itcollege.i377.team6.entities.PiiriloiguHaldaja;
 import java.lang.Integer;
 import java.lang.Long;
-import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -34,17 +33,6 @@ privileged aspect PiiriloiguHaldaja_Roo_Entity {
     public void PiiriloiguHaldaja.persist() {
         if (this.entityManager == null) this.entityManager = entityManager();
         this.entityManager.persist(this);
-    }
-    
-    @Transactional
-    public void PiiriloiguHaldaja.remove() {
-        if (this.entityManager == null) this.entityManager = entityManager();
-        if (this.entityManager.contains(this)) {
-            this.entityManager.remove(this);
-        } else {
-            PiiriloiguHaldaja attached = PiiriloiguHaldaja.findPiiriloiguHaldaja(this.piiriloiguHaldajaId);
-            this.entityManager.remove(attached);
-        }
     }
     
     @Transactional
@@ -77,17 +65,9 @@ privileged aspect PiiriloiguHaldaja_Roo_Entity {
         return entityManager().createQuery("SELECT COUNT(o) FROM PiiriloiguHaldaja o", Long.class).getSingleResult();
     }
     
-    public static List<PiiriloiguHaldaja> PiiriloiguHaldaja.findAllPiiriloiguHaldajas() {
-        return entityManager().createQuery("SELECT o FROM PiiriloiguHaldaja o", PiiriloiguHaldaja.class).getResultList();
-    }
-    
     public static PiiriloiguHaldaja PiiriloiguHaldaja.findPiiriloiguHaldaja(Long piiriloiguHaldajaId) {
         if (piiriloiguHaldajaId == null) return null;
         return entityManager().find(PiiriloiguHaldaja.class, piiriloiguHaldajaId);
-    }
-    
-    public static List<PiiriloiguHaldaja> PiiriloiguHaldaja.findPiiriloiguHaldajaEntries(int firstResult, int maxResults) {
-        return entityManager().createQuery("SELECT o FROM PiiriloiguHaldaja o", PiiriloiguHaldaja.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
     }
     
 }
