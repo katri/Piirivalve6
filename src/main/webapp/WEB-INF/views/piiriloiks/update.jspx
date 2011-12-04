@@ -42,9 +42,10 @@
  		</tr>
  		</c:forEach>
  		</table>
+ 		<p>
  		<!--  Lisa nupp, ms viib VahtkondPiirilõigul Create vaatesse. -->
  		 <a href="/team6/vahtkonndpiiriloiguls?form">Lisa</a>
- 		
+ 		</p>
  		
 	            </td>
 	        </tr>
