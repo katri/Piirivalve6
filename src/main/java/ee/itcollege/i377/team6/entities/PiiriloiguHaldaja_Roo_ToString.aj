@@ -9,11 +9,9 @@ privileged aspect PiiriloiguHaldaja_Roo_ToString {
     
     public String PiiriloiguHaldaja.toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Alates: ").append(getAlates() == null ? "null" : getAlates().getTime()).append(", ");
         sb.append("Avaja: ").append(getAvaja()).append(", ");
         sb.append("Avatud: ").append(getAvatud() == null ? "null" : getAvatud().getTime()).append(", ");
         sb.append("Kommentaar: ").append(getKommentaar()).append(", ");
-        sb.append("Kuni: ").append(getKuni() == null ? "null" : getKuni().getTime()).append(", ");
         sb.append("Muudetud: ").append(getMuudetud() == null ? "null" : getMuudetud().getTime()).append(", ");
         sb.append("Muutja: ").append(getMuutja()).append(", ");
         sb.append("PiiriloiguHaldajaId: ").append(getPiiriloiguHaldajaId()).append(", ");

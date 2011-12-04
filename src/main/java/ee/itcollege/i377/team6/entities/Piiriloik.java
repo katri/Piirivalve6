@@ -55,7 +55,7 @@ public class Piiriloik extends BaseEntity implements Serializable {
 
 	//bi-directional many-to-one association to PiiriloiguHaldaja
 	@OneToMany(mappedBy="piiriloik")
-	private List<PiiriloiguHaldaja> piiriloiguHaldajas;
+	private Set<PiiriloiguHaldaja> piiriloiguHaldajas;
 
 	
 	//bi-directional many-to-one association to VahtkonndPiiriloigul
@@ -89,7 +89,7 @@ public class Piiriloik extends BaseEntity implements Serializable {
     //haldajaMuutmine
 	
 
-	public List<PiiriloiguHaldaja> getPiiriloiguHaldajas() {
+	public Set<PiiriloiguHaldaja> getPiiriloiguHaldajas() {
 		return this.piiriloiguHaldajas;
 	}
 
@@ -97,9 +97,15 @@ public class Piiriloik extends BaseEntity implements Serializable {
 	// Määrab piirilõiguhaldajate setiks parasjagu need read, mis piirilõiguhaldajate olemis
 	// selle konkreetse piirilõigu ID-d omavad
 	
+	
+	
 	public void setPiiriloiguHaldajas(Long id) throws ParseException {
 		this.piiriloiguHaldajas = manageRelations(this.piiriloiguHaldajas, id);
 	
+	}
+	
+	public void setPiiriloiguHaldajas(Set<PiiriloiguHaldaja> piiriloiguHaldajas) {
+		this.piiriloiguHaldajas = piiriloiguHaldajas;
 	}
 	
 /*Haldab piirilõiguhaldaja tabeli muudatusi ja logimist selles
@@ -122,7 +128,7 @@ public class Piiriloik extends BaseEntity implements Serializable {
 		Kui vana väeosa ID on olemas aga uus on tühi, siis uut rida ei tehta. Vana reaga:
 			täidame väljad muutja, muudetud=tänane kpv ja kuni=tänane kpv.
 */
-	private List<PiiriloiguHaldaja> manageRelations(List<PiiriloiguHaldaja> oldSet, Long id) throws ParseException {
+	private Set<PiiriloiguHaldaja> manageRelations(Set<PiiriloiguHaldaja> oldSet, Long id) throws ParseException {
 		
 				
 		
@@ -169,7 +175,7 @@ public class Piiriloik extends BaseEntity implements Serializable {
 	}
 		}
 		
-		return (PiiriloiguHaldaja.findAllPiiriloiguHaldajas());
+		return null;//(PiiriloiguHaldaja.findAllPiiriloiguHaldajas());
 	}
 	
 	
@@ -218,6 +224,8 @@ public class Piiriloik extends BaseEntity implements Serializable {
 	public void setNimetus(String nimetus) {
 		this.nimetus = nimetus;
 	}
+
+
 
 
 }
