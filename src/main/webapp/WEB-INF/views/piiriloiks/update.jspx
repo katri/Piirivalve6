@@ -4,8 +4,11 @@
     <jsp:output omit-xml-declaration="yes"/>
     
     <form:update id="fu_ee_itcollege_i377_team6_entities_Piiriloik" idField="piiriloikId" modelAttribute="piiriloik" path="/piiriloiks" versionField="Version" z="REaJEtMH7/4b2XzllrAo1dgYyR0=">
-       <p style="float:left">
-        <field:input field="kood" id="c_ee_itcollege_i377_team6_entities_Piiriloik_kood" z="SCOdydMQjF/HXf5fkI1tVCjeGto="/>
+        <table style="border-style:none">
+	        <tr>
+	            <td width="50%" style="border-style:none;vertical-align:top">
+	            
+	    <field:input field="kood" id="c_ee_itcollege_i377_team6_entities_Piiriloik_kood" z="SCOdydMQjF/HXf5fkI1tVCjeGto="/>
         <field:input field="nimetus" id="c_ee_itcollege_i377_team6_entities_Piiriloik_nimetus" z="5TT51cxGblra7ovbyf8YlkGxaVM="/>
         <field:textarea field="kommentaar" id="c_ee_itcollege_i377_team6_entities_Piiriloik_kommentaar" z="user-managed"/>
         <field:input field="gpsKoordinaadid" id="c_ee_itcollege_i377_team6_entities_Piiriloik_gpsKoordinaadid" z="1srrEvHWwiiWXUAIxziK+frialk="/>
@@ -18,36 +21,37 @@
  		teeb vajalikud operatsioonid Piiriloiguhaldaja olemiga. 
  		-->
  		<springform:select itemLabel="nimetus" itemValue="vaeosaIdId" path="piiriloiguHaldajas" items="${vaeosad}" multiple="false" required="true"/>
-        </p>
+   
+	               
+	            </td>
+	            
+	            <td width="50%" style="border-style:none;vertical-align:top">
+	                      
         
-       <!-- See tuleb paremale tõsta-->
-       
-       <p>
-        
+      
         
  		<table>
  		<tr><td><b>Vahtkonnad</b></td></tr>
  		<c:forEach items="${vahtkonnad}" var="v">
  		<tr>
  		<td>${v.nimetus}</td>
- 		<td><!-- Selle asemele tuleb teha nupp, mille vajutamisel vahtkond eemaldatakse piiriloigult --> ${v.vahtkondId}</td>
+ 		<td><!-- Selle asemele tuleb teha nupp, mille vajutamisel vahtkond eemaldatakse piiriloigult -->
+ 		 <a href="/team6/vahtkonndpiiriloiguls/${v.vahtkondId}">Kustuta</a> </td>
  		
  		
  		</tr>
  		</c:forEach>
  		</table>
- 		<!--  Lisa nupp, ms viib VahtkondPiirilõigul Create vaatesse. Seda on vaja muuta -->
+ 		<!--  Lisa nupp, ms viib VahtkondPiirilõigul Create vaatesse. -->
  		 <a href="/team6/vahtkonndpiiriloiguls?form">Lisa</a>
- 		</p >
- 		
- 		<p>
  		
  		
-        Vahtkonnad vanaviisi:
-        
-        <springform:select itemLabel="nimetus" itemValue="vahtkondId" items="${vahtkonnad}" multiple="true" path="vahtkonndPiiriloiguls" required="true"/>
-        
-        </p >
+	            </td>
+	        </tr>
+        </table>
+       
+       
+    
 
          <div style="display:none">
         <field:simple field="piiriloiguHaldajas" id="c_ee_itcollege_i377_team6_entities_Piiriloik_piiriloiguHaldajas" messageCode="entity_reference_not_managed" messageCodeAttribute="Piiriloigu Haldaja" render="false" z="user-managed"/>

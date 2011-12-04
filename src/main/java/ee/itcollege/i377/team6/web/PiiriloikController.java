@@ -44,4 +44,5 @@ public class PiiriloikController {
         return "redirect:/piiriloiks/" + encodeUrlPathSegment(piiriloik.getPiiriloikId().toString(), httpServletRequest);
     }
     
+    
 }
