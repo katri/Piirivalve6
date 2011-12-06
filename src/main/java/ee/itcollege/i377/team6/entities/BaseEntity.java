@@ -12,6 +12,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.roo.addon.entity.RooEntity;
 import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.security.core.context.SecurityContextHolder;
 
@@ -19,6 +20,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 
 @RooJavaBean
 @MappedSuperclass
+@RooEntity
 public class BaseEntity {
 	
 	@NotNull

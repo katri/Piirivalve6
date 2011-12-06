@@ -2,7 +2,6 @@ package ee.itcollege.i377.team6.entities;
 
 import java.io.Serializable;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -41,11 +40,11 @@ public class PiiriloiguHaldaja extends BaseEntity implements Serializable {
 	private Long piiriloiguHaldajaId;
 
 	 @NotNull
-	    @Temporal( TemporalType.DATE)
-	    @DateTimeFormat(style = "M-")
-		private Calendar alates;
+	 @Temporal( TemporalType.DATE)
+	 @DateTimeFormat(style = "M-")
+	private Calendar alates;
 
-	    @NotNull
+	  @NotNull
 		@Temporal( TemporalType.DATE)
 	    @DateTimeFormat(style = "M-")
 		private Calendar kuni;
@@ -70,19 +69,20 @@ public class PiiriloiguHaldaja extends BaseEntity implements Serializable {
         if (this.entityManager == null) this.entityManager = entityManager();
         if (this.entityManager.contains(this)) {
         	this.setDeleted();
-            this.entityManager.merge(this);
+            entityManager.merge(this);
         } else {
             PiiriloiguHaldaja attached = PiiriloiguHaldaja.findPiiriloiguHaldaja(this.piiriloiguHaldajaId);
             this.setDeleted();
-            this.entityManager.merge(attached);
+            entityManager.merge(attached);
         }
     }
     
-    
+    @Transactional
     public static List<PiiriloiguHaldaja> findAllPiiriloiguHaldajas() {
         return entityManager().createQuery("SELECT o FROM PiiriloiguHaldaja o WHERE suletud ='9999-12-31'", PiiriloiguHaldaja.class).getResultList();
     }
     
+    @Transactional
     public static List<PiiriloiguHaldaja> findPiiriloiguHaldajaEntries(int firstResult, int maxResults) {
         return entityManager().createQuery("SELECT o FROM PiiriloiguHaldaja o WHERE suletud ='9999-12-31'", PiiriloiguHaldaja.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
     }
