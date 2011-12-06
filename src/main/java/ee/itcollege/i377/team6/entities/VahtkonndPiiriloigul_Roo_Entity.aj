@@ -4,70 +4,17 @@
 package ee.itcollege.i377.team6.entities;
 
 import ee.itcollege.i377.team6.entities.VahtkonndPiiriloigul;
-import java.lang.Integer;
 import java.lang.Long;
-import javax.persistence.Column;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Version;
-import org.springframework.transaction.annotation.Transactional;
 
 privileged aspect VahtkonndPiiriloigul_Roo_Entity {
-    
-    @PersistenceContext
-    transient EntityManager VahtkonndPiiriloigul.entityManager;
-    
-    @Version
-    @Column(name = "version")
-    private Integer VahtkonndPiiriloigul.version;
-    
-    public Integer VahtkonndPiiriloigul.getVersion() {
-        return this.version;
-    }
-    
-    public void VahtkonndPiiriloigul.setVersion(Integer version) {
-        this.version = version;
-    }
-    
-    @Transactional
-    public void VahtkonndPiiriloigul.persist() {
-        if (this.entityManager == null) this.entityManager = entityManager();
-        this.entityManager.persist(this);
-    }
-    
-    @Transactional
-    public void VahtkonndPiiriloigul.flush() {
-        if (this.entityManager == null) this.entityManager = entityManager();
-        this.entityManager.flush();
-    }
-    
-    @Transactional
-    public void VahtkonndPiiriloigul.clear() {
-        if (this.entityManager == null) this.entityManager = entityManager();
-        this.entityManager.clear();
-    }
-    
-    @Transactional
-    public VahtkonndPiiriloigul VahtkonndPiiriloigul.merge() {
-        if (this.entityManager == null) this.entityManager = entityManager();
-        VahtkonndPiiriloigul merged = this.entityManager.merge(this);
-        this.entityManager.flush();
-        return merged;
-    }
-    
-    public static final EntityManager VahtkonndPiiriloigul.entityManager() {
-        EntityManager em = new VahtkonndPiiriloigul().entityManager;
-        if (em == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");
-        return em;
-    }
     
     public static long VahtkonndPiiriloigul.countVahtkonndPiiriloiguls() {
         return entityManager().createQuery("SELECT COUNT(o) FROM VahtkonndPiiriloigul o", Long.class).getSingleResult();
     }
     
-    public static VahtkonndPiiriloigul VahtkonndPiiriloigul.findVahtkonndPiiriloigul(Long vahtkondPiiriloiulId) {
-        if (vahtkondPiiriloiulId == null) return null;
-        return entityManager().find(VahtkonndPiiriloigul.class, vahtkondPiiriloiulId);
+    public static VahtkonndPiiriloigul VahtkonndPiiriloigul.findVahtkonndPiiriloigul(Long id) {
+        if (id == null) return null;
+        return entityManager().find(VahtkonndPiiriloigul.class, id);
     }
     
 }

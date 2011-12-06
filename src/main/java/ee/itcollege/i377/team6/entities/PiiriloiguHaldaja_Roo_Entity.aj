@@ -4,70 +4,17 @@
 package ee.itcollege.i377.team6.entities;
 
 import ee.itcollege.i377.team6.entities.PiiriloiguHaldaja;
-import java.lang.Integer;
 import java.lang.Long;
-import javax.persistence.Column;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Version;
-import org.springframework.transaction.annotation.Transactional;
 
 privileged aspect PiiriloiguHaldaja_Roo_Entity {
-    
-    @PersistenceContext
-    transient EntityManager PiiriloiguHaldaja.entityManager;
-    
-    @Version
-    @Column(name = "version")
-    private Integer PiiriloiguHaldaja.version;
-    
-    public Integer PiiriloiguHaldaja.getVersion() {
-        return this.version;
-    }
-    
-    public void PiiriloiguHaldaja.setVersion(Integer version) {
-        this.version = version;
-    }
-    
-    @Transactional
-    public void PiiriloiguHaldaja.persist() {
-        if (this.entityManager == null) this.entityManager = entityManager();
-        this.entityManager.persist(this);
-    }
-    
-    @Transactional
-    public void PiiriloiguHaldaja.flush() {
-        if (this.entityManager == null) this.entityManager = entityManager();
-        this.entityManager.flush();
-    }
-    
-    @Transactional
-    public void PiiriloiguHaldaja.clear() {
-        if (this.entityManager == null) this.entityManager = entityManager();
-        this.entityManager.clear();
-    }
-    
-    @Transactional
-    public PiiriloiguHaldaja PiiriloiguHaldaja.merge() {
-        if (this.entityManager == null) this.entityManager = entityManager();
-        PiiriloiguHaldaja merged = this.entityManager.merge(this);
-        this.entityManager.flush();
-        return merged;
-    }
-    
-    public static final EntityManager PiiriloiguHaldaja.entityManager() {
-        EntityManager em = new PiiriloiguHaldaja().entityManager;
-        if (em == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");
-        return em;
-    }
     
     public static long PiiriloiguHaldaja.countPiiriloiguHaldajas() {
         return entityManager().createQuery("SELECT COUNT(o) FROM PiiriloiguHaldaja o", Long.class).getSingleResult();
     }
     
-    public static PiiriloiguHaldaja PiiriloiguHaldaja.findPiiriloiguHaldaja(Long piiriloiguHaldajaId) {
-        if (piiriloiguHaldajaId == null) return null;
-        return entityManager().find(PiiriloiguHaldaja.class, piiriloiguHaldajaId);
+    public static PiiriloiguHaldaja PiiriloiguHaldaja.findPiiriloiguHaldaja(Long id) {
+        if (id == null) return null;
+        return entityManager().find(PiiriloiguHaldaja.class, id);
     }
     
 }

@@ -4,70 +4,17 @@
 package ee.itcollege.i377.team6.entities;
 
 import ee.itcollege.i377.team6.entities.Vahtkond;
-import java.lang.Integer;
 import java.lang.Long;
-import javax.persistence.Column;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Version;
-import org.springframework.transaction.annotation.Transactional;
 
 privileged aspect Vahtkond_Roo_Entity {
-    
-    @PersistenceContext
-    transient EntityManager Vahtkond.entityManager;
-    
-    @Version
-    @Column(name = "version")
-    private Integer Vahtkond.version;
-    
-    public Integer Vahtkond.getVersion() {
-        return this.version;
-    }
-    
-    public void Vahtkond.setVersion(Integer version) {
-        this.version = version;
-    }
-    
-    @Transactional
-    public void Vahtkond.persist() {
-        if (this.entityManager == null) this.entityManager = entityManager();
-        this.entityManager.persist(this);
-    }
-    
-    @Transactional
-    public void Vahtkond.flush() {
-        if (this.entityManager == null) this.entityManager = entityManager();
-        this.entityManager.flush();
-    }
-    
-    @Transactional
-    public void Vahtkond.clear() {
-        if (this.entityManager == null) this.entityManager = entityManager();
-        this.entityManager.clear();
-    }
-    
-    @Transactional
-    public Vahtkond Vahtkond.merge() {
-        if (this.entityManager == null) this.entityManager = entityManager();
-        Vahtkond merged = this.entityManager.merge(this);
-        this.entityManager.flush();
-        return merged;
-    }
-    
-    public static final EntityManager Vahtkond.entityManager() {
-        EntityManager em = new Vahtkond().entityManager;
-        if (em == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");
-        return em;
-    }
     
     public static long Vahtkond.countVahtkonds() {
         return entityManager().createQuery("SELECT COUNT(o) FROM Vahtkond o", Long.class).getSingleResult();
     }
     
-    public static Vahtkond Vahtkond.findVahtkond(Long vahtkondId) {
-        if (vahtkondId == null) return null;
-        return entityManager().find(Vahtkond.class, vahtkondId);
+    public static Vahtkond Vahtkond.findVahtkond(Long id) {
+        if (id == null) return null;
+        return entityManager().find(Vahtkond.class, id);
     }
     
 }

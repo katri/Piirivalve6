@@ -20,7 +20,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 
 @RooJavaBean
 @MappedSuperclass
-@RooEntity
 public class BaseEntity {
 	
 	@NotNull

@@ -14,6 +14,7 @@ privileged aspect Piiripunkt_Roo_ToString {
         sb.append("Avatud: ").append(getAvatud() == null ? "null" : getAvatud().getTime()).append(", ");
         sb.append("GpsLatitude: ").append(getGpsLatitude()).append(", ");
         sb.append("GpsLongituide: ").append(getGpsLongituide()).append(", ");
+        sb.append("Id: ").append(getId()).append(", ");
         sb.append("Kommentaar: ").append(getKommentaar()).append(", ");
         sb.append("Kood: ").append(getKood()).append(", ");
         sb.append("KorgusMerepinnast: ").append(getKorgusMerepinnast()).append(", ");
@@ -26,7 +27,8 @@ privileged aspect Piiripunkt_Roo_ToString {
         sb.append("PiiripunktiAlluvuses: ").append(getPiiripunktiAlluvuses() == null ? "null" : getPiiripunktiAlluvuses().size()).append(", ");
         sb.append("Suletud: ").append(getSuletud() == null ? "null" : getSuletud().getTime()).append(", ");
         sb.append("Sulgeja: ").append(getSulgeja()).append(", ");
-        sb.append("Vahtkonds: ").append(getVahtkonds() == null ? "null" : getVahtkonds().size());
+        sb.append("Vahtkonds: ").append(getVahtkonds() == null ? "null" : getVahtkonds().size()).append(", ");
+        sb.append("Version: ").append(getVersion());
         return sb.toString();
     }
     

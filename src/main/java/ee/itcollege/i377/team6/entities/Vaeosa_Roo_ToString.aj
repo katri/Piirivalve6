@@ -12,6 +12,7 @@ privileged aspect Vaeosa_Roo_ToString {
         sb.append("Alates: ").append(getAlates()).append(", ");
         sb.append("Avaja: ").append(getAvaja()).append(", ");
         sb.append("Avatud: ").append(getAvatud() == null ? "null" : getAvatud().getTime()).append(", ");
+        sb.append("Id: ").append(getId()).append(", ");
         sb.append("Kommentaar: ").append(getKommentaar()).append(", ");
         sb.append("Kood: ").append(getKood()).append(", ");
         sb.append("Kuni: ").append(getKuni()).append(", ");
@@ -26,7 +27,8 @@ privileged aspect Vaeosa_Roo_ToString {
         sb.append("VaeosaAlluvuses1: ").append(getVaeosaAlluvuses1() == null ? "null" : getVaeosaAlluvuses1().size()).append(", ");
         sb.append("VaeosaAlluvuses2: ").append(getVaeosaAlluvuses2() == null ? "null" : getVaeosaAlluvuses2().size()).append(", ");
         sb.append("VaeosaIdId: ").append(getVaeosaIdId()).append(", ");
-        sb.append("Vahtkonds: ").append(getVahtkonds() == null ? "null" : getVahtkonds().size());
+        sb.append("Vahtkonds: ").append(getVahtkonds() == null ? "null" : getVahtkonds().size()).append(", ");
+        sb.append("Version: ").append(getVersion());
         return sb.toString();
     }
     

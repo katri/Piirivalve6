@@ -12,6 +12,7 @@ privileged aspect VahtkonndPiiriloigul_Roo_ToString {
         sb.append("Alates: ").append(getAlates()).append(", ");
         sb.append("Avaja: ").append(getAvaja()).append(", ");
         sb.append("Avatud: ").append(getAvatud() == null ? "null" : getAvatud().getTime()).append(", ");
+        sb.append("Id: ").append(getId()).append(", ");
         sb.append("Kommentaar: ").append(getKommentaar()).append(", ");
         sb.append("Kuni: ").append(getKuni()).append(", ");
         sb.append("Muudetud: ").append(getMuudetud() == null ? "null" : getMuudetud().getTime()).append(", ");
@@ -20,7 +21,8 @@ privileged aspect VahtkonndPiiriloigul_Roo_ToString {
         sb.append("Suletud: ").append(getSuletud() == null ? "null" : getSuletud().getTime()).append(", ");
         sb.append("Sulgeja: ").append(getSulgeja()).append(", ");
         sb.append("Vahtkond: ").append(getVahtkond()).append(", ");
-        sb.append("VahtkondPiiriloiulId: ").append(getVahtkondPiiriloiulId());
+        sb.append("VahtkondPiiriloiulId: ").append(getVahtkondPiiriloiulId()).append(", ");
+        sb.append("Version: ").append(getVersion());
         return sb.toString();
     }
     

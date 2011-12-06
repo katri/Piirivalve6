@@ -38,7 +38,7 @@ public class PiiriloiguHaldaja extends BaseEntity implements Serializable {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="PIIRILOIGU_HALDAJA_ID")
 	private Long piiriloiguHaldajaId;
-
+/*
 	 @NotNull
 	 @Temporal( TemporalType.DATE)
 	 @DateTimeFormat(style = "M-")
@@ -48,7 +48,7 @@ public class PiiriloiguHaldaja extends BaseEntity implements Serializable {
 		@Temporal( TemporalType.DATE)
 	    @DateTimeFormat(style = "M-")
 		private Calendar kuni;
-	
+	*/
 	//bi-directional many-to-one association to Piiriloik
     @ManyToOne
 	@JoinColumn(name="PIIRILOIK_ID")
@@ -124,7 +124,7 @@ public class PiiriloiguHaldaja extends BaseEntity implements Serializable {
 	}
 
 
-	public Calendar getAlates() {
+	/*public Calendar getAlates() {
 		return alates;
 	}
 
@@ -141,6 +141,6 @@ public class PiiriloiguHaldaja extends BaseEntity implements Serializable {
 
 	public void setKuni(Calendar kuni) {
 		this.kuni = kuni;
-	}
+	}*/
 	
 }
